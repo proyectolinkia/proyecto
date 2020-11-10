@@ -9,7 +9,59 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="23ae5371-e635-48ac-991e-d965a1825817" name="Default Changelist" comment="" />
+    <list default="true" id="23ae5371-e635-48ac-991e-d965a1825817" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/debug/res/values/google_maps_api.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityMapa.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_mapa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/release/res/values/google_maps_api.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/FormularioRegistro.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityFormularioRegistro.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/PerfilComerciante.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityPerfilComerciante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_formulario_registro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_formulario_registro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_perfil_comerciante.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/layout/activity_perfil_comerciante.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/ProyectoDAM/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/proguard-rules.pro" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/androidTest/java/com/example/appmibarrio/ExampleInstrumentedTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/layout/activity_main.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-hdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-mdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/values/colors.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/values/strings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/app/src/test/java/com/example/appmibarrio/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../Proyectos/appmibarrio/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/mysql-connector-java-8.0.22/mysql-connector-java-8.0.22.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Proyectos/appmibarrio/settings.gradle" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +73,11 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1jogOIavsgxCVbEQeahli0hOw5K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -31,7 +87,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-11-04T11:44:22.658Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/Users/Damian/AndroidStudioProjects/PruebaMaps" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -121,10 +177,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1604490454528" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1604684457303">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605009820993">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1604684457303" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605009820993" />
     <state width="1859" height="263" key="GridCell.Tab.0.bottom" timestamp="1604694666974">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

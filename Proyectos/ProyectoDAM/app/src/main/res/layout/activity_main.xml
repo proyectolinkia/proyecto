@@ -7,7 +7,7 @@
     android:background="@drawable/fondo"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ActivityMain">
 
 
     <androidx.cardview.widget.CardView
@@ -22,6 +22,16 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:orientation="vertical">
+
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="onClickMapa"
+                android:text="VER MAPA DE OFERTAS" />
 
             <TextView
                 android:layout_width="300dp"

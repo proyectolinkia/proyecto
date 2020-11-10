@@ -7,7 +7,7 @@
     android:background="@drawable/fondo"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".PerfilComerciante">
+    tools:context=".ActivityPerfilComerciante">
 
 
     <androidx.cardview.widget.CardView

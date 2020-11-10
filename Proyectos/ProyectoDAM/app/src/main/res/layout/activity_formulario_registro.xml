@@ -7,7 +7,7 @@
     android:background="@drawable/fondo"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".FormularioRegistro">
+    tools:context=".ActivityFormularioRegistro">
 
 
     <androidx.cardview.widget.CardView
