@@ -13,6 +13,10 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,131 +28,73 @@ public class MainActivity extends AppCompatActivity {
     // DECLARO VARIABLES DE CONEXION
     Connection con;
     EditText usu, psw;
-    String un,pass,db,ip;
     ProgressBar progressBar;
+    //final String urlWebService= "http://35.205.20.239/sql.php?sentenciasql=Select%20nombreEmpresa%20FROM%20Empresas%20where%20nombreEmpresa=%27demoEmpresa%27";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // AQUI DECLARO IP NOMBRE USUARIO Y PSW DE LA BBDD
-        ip = "35.205.20.239";
-        db = "appmibarrio";
-        un = "root";
-        pass = "11Azse55@";
+
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
     }
 
-    public void clickRegistro(View view){
+    public void clickRegistro(View view) {
         Intent intent = new Intent(this, FormularioRegistro.class);
-startActivity(intent);
+        startActivity(intent);
     }
 
     public void onClickContinuar(View view) {
-        usu =(EditText) findViewById(R.id.campoUsuario); //ojo
-        psw= (EditText)findViewById(R.id.campoPsw);// OJO
+        Intent intent = new Intent(this, PerfilComerciante.class);
+        usu = (EditText) findViewById(R.id.campoUsuario); //ojo
+        psw = (EditText) findViewById(R.id.campoPsw);// OJO
 
-        CheckLogin checkLogin = new CheckLogin();// EJECUTO LA ASSYNCTASK
-        checkLogin.execute("");
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
+
+        startActivity(intent);
 
     }
 
-    public class CheckLogin extends AsyncTask<String,String,String>
-    {
-        String z = "";
-        Boolean exito = false;
+    private void downloadJSON(final String urlWebService) {
 
-        @Override
-        protected void onPreExecute()
-        {
-            progressBar.setVisibility(View.VISIBLE);
-        }
+        class DownloadJSON extends AsyncTask<Void, Void, String> {
 
-        @Override
-        protected void onPostExecute(String r)
-        {
-            progressBar.setVisibility(View.GONE);
-            Toast.makeText(MainActivity.this, r, Toast.LENGTH_SHORT).show();
-            if(exito)
-            {
-                Toast.makeText(MainActivity.this , "Login Successfull" , Toast.LENGTH_LONG).show();
-                //finish();
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
             }
-        }
-        @Override
-        protected String doInBackground(String... params)
-        {
-            String usernam = usu.getText().toString();
-            String passwordd = psw.getText().toString();
-            if(usernam.trim().equals("")|| passwordd.trim().equals(""))
-                z = "Por favor escribe tu usuario y contraseña";
-            else
-            {
-                try
-                {
-                    con = connectionclass(un, pass, db, ip);        // Connect to database
-                    if (con == null)
-                    {
-                        z = "Comprueba tu acceso a internet!";
+
+
+            @Override
+            protected void onPostExecute(String s) {
+                super.onPostExecute(s);
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                 //  try {
+                //  loadIntoListView(s);
+                //  } catch (JSONException e) {
+                //      e.printStackTrace();
+                //   }
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
                     }
-                    else
-                    {
-                        // AQUI VIENE EL QUERY!!!
-                        String query = "select * from appmibarrio.empresas where emailEmpresa= '" + usernam.toString() + "' and pswrd = '"+ passwordd.toString() +"'  ";
-                        Statement stmt = con.createStatement();
-                        ResultSet rs = stmt.executeQuery(query);
-                        if(rs.next())
-                        {
-                            z = "Login correcto";
-                            exito=true;
-                            con.close();
-                        }
-                        else
-                        {
-                            z = "Credenciales invalidas!";
-                            exito = false;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    exito = false;
-                    z = ex.getMessage();
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
                 }
             }
-            return z;
         }
-    }
-
-    @SuppressLint("NewApi")
-    public Connection connectionclass(String user, String password, String database, String server)
-    {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
-        Connection connection = null;
-        String ConnectionURL = null;
-        try
-        {
-            Class.forName("net.sourceforge.jtds.jdbc.Driver");
-            ConnectionURL = "jdbc:jtds:sqlserver://" + server + "/" + database + ";user=" + user+";password="+password; //"jdbc:jtds:sqlserver://" + server +"/"+ database + ";user=" + user+ ";password=" + password + ";";
-            connection = DriverManager.getConnection(ConnectionURL);                                                                                    //jdbc:jtds:<server_type>://<server>[:<port>][/<database>][;<property>=<value>[;...]]
-            if(connection != null){
-                Log.e("Capullin si se conecta", "aiaiai");
-            }
-        }
-        catch (SQLException se)
-        {
-            Log.e("error here 1 : ", se.getMessage());
-        }
-        catch (ClassNotFoundException e)
-        {
-            Log.e("error here 2 : ", e.getMessage());
-        }
-        catch (Exception e)
-        {
-            Log.e("error here 3 : ", e.getMessage());
-        }
-        return connection;
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
     }
 
 }
