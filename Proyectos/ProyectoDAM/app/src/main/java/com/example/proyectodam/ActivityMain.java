@@ -30,7 +30,8 @@ public class ActivityMain extends AppCompatActivity {
     Connection con;
     EditText usu, psw;
     ProgressBar progressBar;
-	String valor;
+    String valor;
+    int idEmpresa;
     //final String urlWebService= "http://35.205.20.239/sql.php?sentenciasql=Select%20nombreEmpresa%20FROM%20Empresas%20where%20nombreEmpresa=%27demoEmpresa%27";
 
     @Override
@@ -55,14 +56,14 @@ public class ActivityMain extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityPerfilComerciante.class);
         usu = (EditText) findViewById(R.id.campoUsuario); //ojo
         psw = (EditText) findViewById(R.id.campoPsw);// OJO
-       String nombreEmpresa=usu.getText().toString();
-      //  downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
-     downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+nombreEmpresa+"%27",intent);
-     //   startActivity(intent);
+        String nombreEmpresa=usu.getText().toString();
+        //  downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa%20FROM%20Empresas%20where%20nombreEmpresa=%27"+nombreEmpresa+"%27",intent);
+        //   startActivity(intent);
 
     }
 
-    private void downloadJSON(final String urlWebService,Intent intent) {
+    private void downloadJSON(final String urlWebService,final Intent intent) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
 
@@ -82,6 +83,7 @@ public class ActivityMain extends AppCompatActivity {
                     jsonArray = new JSONArray(s);
                     JSONObject obj = jsonArray.getJSONObject(0);
                     valor = obj.getString("pswrd");
+                    idEmpresa = obj.getInt("idEmpresa");
                 } catch (JSONException e) {
                     // e.printStackTrace();
                 }
@@ -106,11 +108,13 @@ public class ActivityMain extends AppCompatActivity {
                 sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
 
                 if (sha1.equals(valor)) {
+                    intent.putExtra("idEmpresa", idEmpresa);
+                    intent.putExtra("nombreEmpresa", usu.getText().toString());
                     startActivity(intent);
                 } else {
                     Toast toast1 =
                             Toast.makeText(getApplicationContext(),
-                                    "Los datos no son corrrectos", Toast.LENGTH_SHORT);
+                                    "Los datos no son correctos", Toast.LENGTH_SHORT);
 
                     toast1.show();
                 }

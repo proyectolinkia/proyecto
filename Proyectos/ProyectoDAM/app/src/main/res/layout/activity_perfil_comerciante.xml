@@ -24,12 +24,12 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/txtEmpresa"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp"
-                android:text="Nombre Empresa"
                 android:textColor="#000000"
                 android:textSize="30sp"
                 android:textStyle="bold"
