@@ -9,13 +9,15 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c05ab5-080c-45bb-b269-9712cce06888" name="Default Changelist" comment="" />
+    <list default="true" id="54c05ab5-080c-45bb-b269-9712cce06888" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[Nexus_5_API_22]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -165,10 +167,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="366" y="39" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1604903911844" />
-    <state x="615" y="53" key="FileChooserDialogImpl" timestamp="1605078263290">
+    <state x="615" y="53" key="FileChooserDialogImpl" timestamp="1605090598732">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="615" y="53" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605078263290" />
+    <state x="615" y="53" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605090598732" />
     <state width="1163" height="284" key="GridCell.Tab.0.bottom" timestamp="1604948934234">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
