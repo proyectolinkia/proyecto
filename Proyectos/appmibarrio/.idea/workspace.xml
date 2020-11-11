@@ -9,9 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="54c05ab5-080c-45bb-b269-9712cce06888" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/../ProyectoDAM/app/src/main/java/com/example/proyectodam/ActivityMain.java" afterDir="false" />
-    </list>
+    <list default="true" id="54c05ab5-080c-45bb-b269-9712cce06888" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,7 +46,6 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android-custom-viewC:/Users/jmg39/AppData/Local/Android/Sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="dart.analysis.tool.window.visible" value="false" />
