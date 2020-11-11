@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/appmibarrio.iml" filepath="$PROJECT_DIR$/.idea/modules/appmibarrio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/appmibarrio.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/appmibarrio.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/mysql-connector-java-8.0.22/appmibarrio.mysql-connector-java-8.0.22.iml" filepath="$PROJECT_DIR$/.idea/modules/mysql-connector-java-8.0.22/appmibarrio.mysql-connector-java-8.0.22.iml" />
+    </modules>
+  </component>
+</project>
