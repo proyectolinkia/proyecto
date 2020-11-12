@@ -31,12 +31,13 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_comerciante);
         final TextView txtEmpresa = findViewById(R.id.txtEmpresa);
         Bundle parametros = this.getIntent().getExtras();
+
         if(parametros !=null){
              idEmpresa = parametros.getInt("idEmpresa");
              nombreEmpresa = parametros.getString("nombreEmpresa");
             txtEmpresa.setText(nombreEmpresa);
         }
-        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk=1;");
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk=%27"+idEmpresa+"%27");
     }
 
     public void anadePV(View view) {
