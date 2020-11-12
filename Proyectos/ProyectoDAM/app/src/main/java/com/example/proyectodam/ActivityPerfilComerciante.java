@@ -96,7 +96,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] = obj.getString("idPuntoVenta") + " " + obj.getString("nombrePuntoVenta");
+            puntoVenta[i] = obj.getString("nombrePuntoVenta");
         }
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, puntoVenta);
         sPuntosVenta.setAdapter(arrayAdapter);
