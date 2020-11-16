@@ -27,28 +27,28 @@ public class ActivityMapa extends FragmentActivity
         OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private LatLng marcador1 = new LatLng(41.38044,2.17069);
-    private LatLng marcador2 = new LatLng(41.38054,2.17080);
-    private LatLng marcador3 = new LatLng(41.38042,2.17090);
+   // private LatLng marcador1 = new LatLng(41.38044,2.17069);
+    //private LatLng marcador2 = new LatLng(41.38054,2.17080);
+    //private LatLng marcador3 = new LatLng(41.38042,2.17090);
 
 
-    public ArrayList<LatLng> ubicasMuestra =new ArrayList<>();
+//    public ArrayList<LatLng> ubicasMuestra =new ArrayList<>();
 
 
 
-
+ArrayList<Integer> idPV= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
-        //   Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        ubicasMuestra.add(marcador1);
-        ubicasMuestra.add(marcador2);
-        ubicasMuestra.add(marcador3);
+        Bundle parametros = this.getIntent().getExtras();
+        if(parametros !=null){
+            idPV = parametros.getIntegerArrayList("idPV");
+           }
 
     }
 
@@ -82,7 +82,7 @@ public class ActivityMapa extends FragmentActivity
         Criteria criteria = new Criteria();
         String provider = service.getBestProvider(criteria, false);
         Location location = service.getLastKnownLocation(provider);
-        LatLng miUbica = new LatLng(location.getLatitude(),location.getLongitude()); //obtenemos coordenadas de mi ubicación
+        LatLng miUbica = new LatLng(location.getLatitude(), location.getLongitude()); //obtenemos coordenadas de mi ubicación
        mMap.setMinZoomPreference(15); //AQUI ZOOM MINIMO INICIAL
         mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbica)); //centramos camara en mi ubica
        // for (int i = 0; i<ubicasMuestra.size(); i++){

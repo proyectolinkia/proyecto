@@ -23,6 +23,8 @@ import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ActivityMain extends AppCompatActivity {
 
@@ -31,6 +33,7 @@ public class ActivityMain extends AppCompatActivity {
     EditText usu, psw;
     ProgressBar progressBar;
     String valor;
+    ArrayList<Integer> idPV= new ArrayList<>();
     int idEmpresa;
     //final String urlWebService= "http://35.205.20.239/sql.php?sentenciasql=Select%20nombreEmpresa%20FROM%20Empresas%20where%20nombreEmpresa=%27demoEmpresa%27";
 
@@ -49,7 +52,7 @@ public class ActivityMain extends AppCompatActivity {
 
     public void onClickMapa(View view) {
         Intent intent = new Intent(this, ActivityMapa.class);
-        startActivity(intent);
+        downloadProductos("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVentafk%20FROM%20Productos",intent);
     }
 
     public void onClickContinuar(View view) {
@@ -134,6 +137,65 @@ public class ActivityMain extends AppCompatActivity {
                     }
                     if((json == null)&&sb.toString().equals("[]\n")) {
                         obtenido = "[{\"pswrd\":\"11111\"}]";
+
+                    }else{obtenido=sb.toString().trim();};
+                    return obtenido;
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+    private void downloadProductos(final String urlWebService,final Intent intent) {
+
+        class DownloadJSON extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+
+            @Override
+            protected void onPostExecute(String s) {
+                JSONArray jsonArray = null;
+                String sha1;
+                super.onPostExecute(s);
+                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                try {
+                    jsonArray = new JSONArray(s);
+                    for(int i=0; i<jsonArray.length(); i++){
+                        JSONObject obj = jsonArray.getJSONObject(i);
+                            idPV.add(obj.getInt("idPuntoVentafk"));
+
+                    }
+
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                }
+
+                intent.putExtra("idPV", idPV);
+
+                startActivity(intent);
+
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String obtenido = null;
+                    String json = " ";
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    if((json == null)&&sb.toString().equals("[]\n")) {
+                        obtenido = "";
 
                     }else{obtenido=sb.toString().trim();};
                     return obtenido;
