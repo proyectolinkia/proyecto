@@ -81,7 +81,7 @@ public class ActivityMain extends AppCompatActivity {
                 JSONArray jsonArray = null;
                 String sha1;
                 super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
                 try {
                     jsonArray = new JSONArray(s);
                     JSONObject obj = jsonArray.getJSONObject(0);
