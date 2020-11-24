@@ -57,6 +57,8 @@ INSERT INTO Empresas (nombreEmpresa,calleEmpresa ,calleNumeroEmpresa ,ciudadEmpr
 				VALUES ("demoEmpresa","Carrer de Pelai", 7,"Barcelona","Barcelona",08001,933019890,"demo@email.com",sha1("demopass"));
 INSERT INTO PuntoVenta (nombrePuntoVenta,callePuntoVenta ,calleNumeroPuntoVenta ,ciudadPuntoVenta ,provinciaPuntoVenta ,CpPuntoVenta ,telefonoPuntoVenta ,emailPuntoVenta,idEmpresafk) 
 				VALUES ("demoPuntoVenta","Carrer de Pelai", 7,"Barcelona","Barcelona",08001,933019890,"demoPuntoVenta@email.com",1 );
+INSERT INTO PuntoVenta (nombrePuntoVenta,callePuntoVenta ,calleNumeroPuntoVenta ,ciudadPuntoVenta ,provinciaPuntoVenta ,CpPuntoVenta ,telefonoPuntoVenta ,emailPuntoVenta,idEmpresafk) 
+				VALUES ("demoPuntoVenta2","Carrer de Pelai", 8,"Barcelona","Barcelona",08001,933019890,"demoPuntoVenta2@email.com",1 );
                 
 INSERT INTO CategoriasProductos (nombreCategoriaProducto ,descripcionCategoriaProducto ) 
 				VALUES ("zapatos","Cosa para no lastimarse los pies" );
@@ -67,3 +69,6 @@ INSERT INTO Productos (referenciaProducto ,nombreProducto ,descripcionProducto ,
 GRANT ALL PRIVILEGES ON appmibarrio.* TO 'jacobo'@'localhost';
 
 Select nombreEmpresa FROM Empresas where nombreEmpresa='demoEmpresa';
+Select idPuntoVenta,nombrePuntoVenta FROM PuntoVenta where idEmpresafk=1;
+
+INSERT INTO PuntoVenta (nombrePuntoVenta) VALUES ("demoPuntoVenta2");

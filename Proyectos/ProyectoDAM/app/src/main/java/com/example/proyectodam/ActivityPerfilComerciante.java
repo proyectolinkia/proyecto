@@ -37,11 +37,12 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
              nombreEmpresa = parametros.getString("nombreEmpresa");
             txtEmpresa.setText(nombreEmpresa);
         }
-        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk=%27"+idEmpresa+"%27");
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk="+idEmpresa+"");
     }
 
     public void anadePV(View view) {
         Intent intent = new Intent(this, ActivityFormularioRegistro.class);
+        intent.putExtra("id",idEmpresa);
         startActivity(intent);
     }
     public void anadeOferta(View view) {
