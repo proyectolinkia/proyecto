@@ -1,4 +1,0 @@
-#Sun Nov 08 21:03:36 CET 2020
-base.0=E\:\\Curso2021\\m13\\Proyectos\\appmibarrio\\app\\build\\intermediates\\dex\\release\\mergeDexRelease\\classes.dex
-path.0=classes.dex
-renamed.0=classes.dex

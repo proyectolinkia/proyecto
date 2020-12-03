@@ -8,7 +8,7 @@
          location permissions for the "MyLocation" functionality.
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -31,6 +31,8 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <activity android:name=".ActivityMuestraMapa" />
+        <activity android:name=".ActivityFragmentPrueba" />
         <activity
             android:name=".ActivityMapa"
             android:label="@string/title_activity_mapa" />
@@ -43,6 +45,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".ClasesMapa.GeocodeAddressIntentService"
+            android:exported="false"/>
     </application>
 
 </manifest>

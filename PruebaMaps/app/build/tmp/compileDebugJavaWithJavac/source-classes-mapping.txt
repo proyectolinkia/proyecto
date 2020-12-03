@@ -1,4 +1,0 @@
-com/example/pruebamaps/BuildConfig.java
- com.example.pruebamaps.BuildConfig
-com/example/pruebamaps/MapsActivity.java
- com.example.pruebamaps.MapsActivity
