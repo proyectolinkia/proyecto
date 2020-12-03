@@ -6,6 +6,7 @@
     <string name="usuario">Usuario</string>
     <string name="login">LOGIN</string>
     <string name="title_activity_mapa">Map</string>
+=======
     <string name="NombrePV">Nombre punto de Venta</string>
     <string name="CallePV">Calle punto de Venta</string>
     <string name="NumCallePV">Número</string>
@@ -14,4 +15,5 @@
     <string name="provinciaPV">Provincia</string>
     <string name="telefonoPV">Teléfono</string>
     <string name="emailPV">Email</string>
+>>>>>>> b06b12f8ae39422f7ec16863eee204a976ace3ee
 </resources>
