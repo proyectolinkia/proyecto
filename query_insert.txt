@@ -1,0 +1,3 @@
+http://35.205.20.239/sqli_3.php?nombre=%27aa%27&calle=%27aa%27&numero=1&ciudad=%27aa%27&provincia=%27aa%27&cp=1&calle=%27aa%27&telefono=666&email=%27aa%27&idEmpresa=1
+http://35.205.20.239/sqli_3.php?nombre=%27vv%27&calle=%27aa%27&numero=qq&ciudad=%27aa%27&provincia=%27aa%27&cp=aa&telefono=aa&email=%27aaa%27&idEmpresa=1
+http://35.205.20.239/sqli_3.php?nombre=%27aa%27&calle=%27aa%27&numero=1&ciudad=%27aa%27&provincia=%27aa%27&cp=1&telefono=666&email=%27aa%27&idEmpresa=1

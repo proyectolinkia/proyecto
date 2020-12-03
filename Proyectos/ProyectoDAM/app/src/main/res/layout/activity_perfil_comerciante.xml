@@ -57,8 +57,6 @@
                 android:textStyle="bold" />
 
 
-
-
             <Button
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
@@ -68,6 +66,15 @@
                 android:layout_marginBottom="15dp"
                 android:onClick="anadePV"
                 android:text="Añadir Punto de Venta" />
+            <Button
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="15dp"
+                android:onClick="verOfertas"
+                android:text="Ver Ofertas Punto Venta" />
 
             <TextView
                 android:layout_width="300dp"
@@ -83,7 +90,8 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:id="@+id/rvOfertas"/>
 
             <Button
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
