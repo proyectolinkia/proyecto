@@ -31,11 +31,13 @@ public class GeocodeAddressIntentService extends IntentService {
         String errorMessage = "";
         List<Address> addresses = null;
 
-        int fetchType = intent.getIntExtra(Constants.FETCH_TYPE_EXTRA, 0);
+     //   int fetchType = intent.getIntExtra(Constants.FETCH_TYPE_EXTRA, 0);
+        int fetchType = 1;
         Log.e(TAG, "fetchType == " + fetchType);
 
         if(fetchType == Constants.USE_ADDRESS_NAME) {
-            String name = intent.getStringExtra(Constants.LOCATION_NAME_DATA_EXTRA);
+          //  String name = intent.getStringExtra(Constants.LOCATION_NAME_DATA_EXTRA);
+            String name="Via Laietana 4, Barcelona";
             try {
                 addresses = geocoder.getFromLocationName(name, 1);
             } catch (IOException e) {
