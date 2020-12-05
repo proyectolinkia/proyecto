@@ -1,37 +1,20 @@
 package com.example.proyectodam;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 
 import android.Manifest;
-import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.ResultReceiver;
-import android.util.Log;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.proyectodam.ClasesMapa.Constants;
-import com.example.proyectodam.ClasesMapa.GeocodeAddressIntentService;
-import com.example.proyectodam.ClasesMapa.GetLocationFromAdress;
 import com.example.proyectodam.clasesJSON.DownloadDirecciones;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,23 +23,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
-
-import static java.security.AccessController.getContext;
-
+/*
 public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLocationButtonClickListener, OnMapReadyCallback {
 
     AddressResultReceiver mResultReceiver;
@@ -91,7 +61,7 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
         /*if (parametros != null) {
             direccionesClase = (DownloadDirecciones) parametros.getSerializable("direccionesClase");
         }*/
-        if (parametros != null) {
+      /*  if (parametros != null) {
             idPVUnicos = parametros.getIntegerArrayList("idUnicos");
         }
         for (int i = 0; i < idPVUnicos.size(); i++) {
@@ -110,7 +80,7 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
      */
-    @Override
+  /*  @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -177,26 +147,14 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
         Intent intent = new Intent(this, GeocodeAddressIntentService.class);
         intent.putExtra(Constants.RECEIVER, mResultReceiver);
         intent.putExtra(Constants.FETCH_TYPE_EXTRA, fetchType);
-        intent.putExtra(Constants.LOCATION_NAME_DATA_EXTRA, "Via Laietana 4, Barcelona"); //SIIIIIII AQUI METER MI DIRECCION!!!
 
-        /*if (fetchType == Constants.USE_ADDRESS_NAME) {      //NOOOOOOOO
-            if (addressEdit.getText().length() == 0) {
-                Toast.makeText(this, "Please enter an address name", Toast.LENGTH_LONG).show();
-                return;
-            }
-            intent.putExtra(Constants.LOCATION_NAME_DATA_EXTRA, addressEdit.getText().toString()); //SIIIIIII
-        } else {
-            if (latitudeEdit.getText().length() == 0 || longitudeEdit.getText().length() == 0) {
-                Toast.makeText(this,
-                        "Please enter both latitude and longitude",
-                        Toast.LENGTH_LONG).show();
-                return;
-            } //NOOOOOOOOOO
-            intent.putExtra(Constants.LOCATION_LATITUDE_DATA_EXTRA,
-                    Double.parseDouble(latitudeEdit.getText().toString()));
-            intent.putExtra(Constants.LOCATION_LONGITUDE_DATA_EXTRA,
-                    Double.parseDouble(longitudeEdit.getText().toString()));
-        }*/
+        direcciones = direccionesClase.getDirecciones();
+            intent.putExtra(Constants.LOCATION_NAME_DATA_EXTRA, direcciones); //SIIIIIII AQUI METER MI DIRECCION!!!
+
+
+
+
+
         Log.e(TAG, "Starting Service");
         startService(intent);
     }
@@ -209,7 +167,7 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
         @Override
         protected void onReceiveResult(int resultCode, final Bundle resultData) {
             if (resultCode == Constants.SUCCESS_RESULT) {
-                final Address address = resultData.getParcelable(Constants.RESULT_ADDRESS);
+                final Address address = resultData.getParcelable(Constants.RESULT_ADDRESSES);
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -229,7 +187,7 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
         }
     }
 
-}
+}*/
 
 
 
@@ -240,7 +198,7 @@ public class ActivityMapa extends AppCompatActivity implements GoogleMap.OnMyLoc
 
 
 
-/*
+
 public class ActivityMapa extends FragmentActivity
         implements GoogleMap.OnMyLocationButtonClickListener,
         // GoogleMap.OnMyLocationClickListener,
@@ -250,18 +208,9 @@ public class ActivityMapa extends FragmentActivity
     ArrayList<String> direcciones = new ArrayList<>();
     public ArrayList<LatLng> ubicaciones = new ArrayList<>();
     DownloadDirecciones direccionesClase = new DownloadDirecciones();
-    GetLocationFromAdress getLocationFromAdress = new GetLocationFromAdress();
     ArrayList<Integer> idPVUnicos;
     private List<Address> localizaciones;
     private LatLng ubica;
-
-    Intent intent = new Intent(this, GeocodeAddressIntentService.class);
-    AddressResultReceiver mResultReceiver;
-    intent.putExtra(Constants.RECEIVER,mResultReceiver);
-    intent.putExtra(Constants.LOCATION_NAME_DATA_EXTRA);
-
-
-    startService(intent);
 
 
     @Override
@@ -273,9 +222,7 @@ public class ActivityMapa extends FragmentActivity
         mapFragment.getMapAsync(this);
         Bundle parametros = this.getIntent().getExtras();
 
-     /*   if (parametros != null) {
-            direccionesClase = (DownloadDirecciones) parametros.getSerializable("direccionesClase");
-        }
+
         if (parametros != null) {
             idPVUnicos = parametros.getIntegerArrayList("idUnicos");
         }
@@ -293,6 +240,7 @@ public class ActivityMapa extends FragmentActivity
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
+     **/
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -310,7 +258,6 @@ public class ActivityMapa extends FragmentActivity
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
-        //mMap.setOnMyLocationClickListener(this);
         LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = service.getBestProvider(criteria, false);
@@ -320,21 +267,8 @@ public class ActivityMapa extends FragmentActivity
         mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbica)); //centramos camara en mi ubica
 
 
-        //    GetUbicacionFromDireccion getUbicacionFromDireccion = new GetUbicacionFromDireccion(direcciones, this);
-        //    ubicaciones = getUbicacionFromDireccion.getUbicaciones();
-
-        //   for (int i = 0; i < ubicaciones.size(); i++) {
-        //       mMap.addMarker(new MarkerOptions().position(ubicaciones.get(i)).title("CARGAR ALGO COMO NOMBRE PRODUCTO"));
-        //  }
-        //la funcion comentada sirve para añadir un arraylist del tipo LatLng a nuestro mapa en forma de marcadores.
-
     }
-    //SIMPLEMENTE DA UN MENSAJE AL CLICAR UBICA la dejo comentada en principio no la vamos a necesitar
-    //@Override
-    //public void onMyLocationClick(@NonNull Location location) { //SIMPLEMENTE DA UN MENSAJE AL CLICAR UBICA
-    //Toast.makeText(this, "Ubicacion actual:\n" + location, Toast.LENGTH_LONG)
-    //     .show();
-    //}
+
 
     @Override
     public boolean onMyLocationButtonClick() {
@@ -347,26 +281,10 @@ public class ActivityMapa extends FragmentActivity
 
     public void onClickCargar(View view) {
         direcciones = direccionesClase.getDirecciones();
-        for (int i = 1; i < direcciones.size(); i++) {
-            ubica = getLocationFromAdress.getLocFromAdd(this, direcciones.get(i));
-            mMap.addMarker(new MarkerOptions().position(ubica));
-        }
 
-        /*Geocoder coder = new Geocoder(this, Locale.getDefault());
-        try {
-            for(int i=0; i<direcciones.size(); i++){
+        Geocoder coder = new Geocoder(this, Locale.getDefault());
 
-            this.localizaciones = coder.getFromLocationName(direcciones.get(i), 1);
-
-            if (localizaciones.size()>0) {
-                Address addr = localizaciones.get(0);
-                ubica = new LatLng(addr.getLatitude(),addr.getLongitude());
-                this.ubicaciones.add(ubica);
-            }}
-        } catch (Exception e) {
-            System.out.print(e.getMessage());
-        }
-        /*for (int i = 0; i < direcciones.size(); i++) {
+        for (int i = 0; i < direcciones.size(); i++) {
             try {
 
                 this.localizaciones = coder.getFromLocationName(direcciones.get(i), 1);
@@ -389,32 +307,4 @@ public class ActivityMapa extends FragmentActivity
 
 
     }
-
-
-    class AddressResultReceiver extends ResultReceiver {
-        public AddressResultReceiver(Handler handler) {
-            super(handler);
-        }
-
-        @Override
-        protected void onReceiveResult(int resultCode, final Bundle resultData) {
-            if (resultCode == Constants.SUCCESS_RESULT) {
-                final Address address = resultData.getParcelable(Constants.RESULT_ADDRESS);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                       //TODO que hagooooooo
-                    }
-                });
-            } else {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                       //TODO que hagooooo
-                    }
-                });
-            }
-        }
-    }
 }
-*/
