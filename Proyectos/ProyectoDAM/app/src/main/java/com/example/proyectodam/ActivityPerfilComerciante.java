@@ -29,6 +29,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil_comerciante);
         final TextView txtEmpresa = findViewById(R.id.txtEmpresa);
@@ -50,7 +51,11 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         startActivity(intent);
     }
     public void anadeOferta(View view) {
-        Intent intent = new Intent(this, ActivityFormularioRegistro.class);
+        Intent intent = new Intent(this, FormularioOfertasActivity.class);
+        Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
+        String idPV=sPuntosVenta.getSelectedItem().toString();
+        intent.putExtra("nombrePV",idPV);
+        intent.putExtra("idEmpresa",idEmpresa);
         startActivity(intent);
     }
     public void verOfertas(View view) {

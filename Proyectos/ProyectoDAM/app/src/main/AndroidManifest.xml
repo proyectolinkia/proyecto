@@ -17,6 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
+        <activity
+            android:name=".FormularioOfertasActivity"
+            android:label="@string/title_activity_formulario_ofertas"
+            android:theme="@style/Theme.ProyectoDAM.NoActionBar"></activity>
         <activity android:name=".MainActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -30,7 +34,6 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-
         <activity
             android:name=".ActivityMapa"
             android:label="@string/title_activity_mapa" />
@@ -43,7 +46,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

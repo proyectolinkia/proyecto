@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".FormularioOfertasActivity">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="@string/referenciaProd"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoReferencia"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                android:gravity="center"
+                android:textSize="17dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="@string/nombreProducto"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoDenominacionProd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                android:gravity="center"
+                android:textSize="17dp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:text="@string/descripcionProducto"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoDescripcionProd"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                android:gravity="center"
+                android:textSize="17dp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+
+                android:text="@string/precioProducto"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/campoPrecio"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:textSize="13dp" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:gravity="center"
+
+                android:text="@string/campoCategoria"
+                android:textColor="#000000"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:typeface="sans" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:gravity="center">
+
+            <Spinner
+                android:id="@+id/spinnerCategorias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="25dp">
+        <Button
+            android:id="@+id/buttonGuardarProducto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickGuardarOferta"
+            android:text="Button" />
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>

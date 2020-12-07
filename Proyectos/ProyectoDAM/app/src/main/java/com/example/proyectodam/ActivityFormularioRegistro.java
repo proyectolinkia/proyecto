@@ -27,7 +27,7 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        intent = new Intent(this, ActivityPerfilComerciante.class);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_registro);
         Bundle parametros = this.getIntent().getExtras();

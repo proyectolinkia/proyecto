@@ -6,7 +6,7 @@
     <string name="usuario">Usuario</string>
     <string name="login">LOGIN</string>
     <string name="title_activity_mapa">Map</string>
-=======
+    =======
     <string name="NombrePV">Nombre punto de Venta</string>
     <string name="CallePV">Calle punto de Venta</string>
     <string name="NumCallePV">Número</string>
@@ -15,5 +15,19 @@
     <string name="provinciaPV">Provincia</string>
     <string name="telefonoPV">Teléfono</string>
     <string name="emailPV">Email</string>
->>>>>>> b06b12f8ae39422f7ec16863eee204a976ace3ee
+    <string name="title_activity_formulario_ofertas">Insertar Ofertas</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="referenciaProd">Referencia</string>
+    <string name="nombreProducto">Denominacion del producto</string>
+    <string name="precioProducto">Precio</string>
+    <string name="campoCategoria">Categoria</string>
+    <string name="descripcionProducto">Descripción</string>
+    >>>>>>> b06b12f8ae39422f7ec16863eee204a976ace3ee
 </resources>

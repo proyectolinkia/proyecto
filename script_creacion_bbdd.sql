@@ -72,3 +72,10 @@ Select nombreEmpresa FROM Empresas where nombreEmpresa='demoEmpresa';
 Select idPuntoVenta,nombrePuntoVenta FROM PuntoVenta where idEmpresafk=1;
 
 INSERT INTO PuntoVenta (nombrePuntoVenta) VALUES ("demoPuntoVenta2");
+
+SHOW VARIABLES LIKE "%version%";
+INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,precioProducto,idCategoriaProducto,idPuntoVenta) values("demoref2","demoNombre2","demoDescripcion2",888,(Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos"),(Select idPuntoVentaPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1));
+INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,precioProducto,idCategoriaProductofk,idPuntoVentafk) Select "bb" as referenciaProducto,"aa " as nombreProducto,"cc" as descripcionProducto,55 as precioProducto,(Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos") as idCategoriaProductofk,(Select idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1) as idPuntoVentafk FROM DUAL;
+Select "aa " as nombreProducto, idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1;
+Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos";
+INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,precioProducto,idCategoriaProductofk,idPuntoVentafk) Select "aa" as referenciaProducto,"bb" as nombreProducto,"cc" as descripcionProducto,55 as precioProducto,(Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos") as idCategoriaProductofk,(Select idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1) as idPuntoVentafk FROM DUAL;
