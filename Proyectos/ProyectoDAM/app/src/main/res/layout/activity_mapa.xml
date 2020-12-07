@@ -41,4 +41,5 @@
                 tools:context=".ActivityMapa" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>

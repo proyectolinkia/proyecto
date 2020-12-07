@@ -22,7 +22,7 @@ import java.util.Set;
 public class DownloadProductos {
 
     ArrayList<Integer> idPV = new ArrayList<>();
-    ArrayList<String> direcciones = new ArrayList<>();
+
     Set<Integer> idPVUnicos;
 
 
@@ -78,8 +78,6 @@ public class DownloadProductos {
 
     private void loadIntoIdUnicos(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
-        ArrayList<Integer> idPV = new ArrayList<>();
-        //  Spinner i = (Spinner) findViewById(R.id.spinner);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
             idPV.add(obj.getInt("idPuntoVentafk"));
