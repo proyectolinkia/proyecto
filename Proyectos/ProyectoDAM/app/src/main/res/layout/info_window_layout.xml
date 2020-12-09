@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp" >
+
+
+
+
+    <TextView
+        android:id="@+id/info_window_direcciones"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="5dp"
+        android:text="Carlo Estrada Solano" />
+
+    <TextView
+        android:id="@+id/info_window_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_below="@id/info_window_direcciones"
+        android:paddingLeft="5dp"
+        android:text="Placas: SX5487" />
+
+
+
+
+
+</RelativeLayout>

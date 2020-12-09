@@ -12,21 +12,23 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.proyectodam.ClasesMapa.CustomInfoWindowAdapter;
 import com.example.proyectodam.clasesJSON.DownloadDirecciones;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-
 
 
 public class ActivityMapa extends FragmentActivity
@@ -95,6 +97,7 @@ public class ActivityMapa extends FragmentActivity
         LatLng miUbica = new LatLng(location.getLatitude(), location.getLongitude()); //obtenemos coordenadas de mi ubicación
         mMap.setMinZoomPreference(15); //AQUI ZOOM MINIMO INICIAL
         mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbica)); //centramos camara en mi ubica
+        mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(this)));
 
 
     }
@@ -130,8 +133,10 @@ public class ActivityMapa extends FragmentActivity
 
         }
 
+
         for (int i = 0; i < ubicaciones.size(); i++) {
-            mMap.addMarker(new MarkerOptions().position(ubicaciones.get(i)).title(puntosVenta.get(i)));
+
+            mMap.addMarker(new MarkerOptions().position(ubicaciones.get(i)).title(puntosVenta.get(i)).snippet(direcciones.get(i)));
 
         }
 
