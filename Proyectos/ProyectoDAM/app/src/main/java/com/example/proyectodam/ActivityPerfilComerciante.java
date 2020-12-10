@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -162,28 +163,33 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
     }
 
     private void loadIntoRV(String json) throws JSONException {
-         RecyclerView recyclerView;
-         RecyclerView.Adapter mAdapter;
-        RecyclerView.LayoutManager layoutManager;
+       //  RecyclerView recyclerView;
+      //   RecyclerView.Adapter mAdapter;
+     //   RecyclerView.LayoutManager layoutManager;
         JSONArray jsonArray = new JSONArray(json);
         String[] puntoVenta = new String[jsonArray.length()];
-
+       ListView listview;
+        listview = (ListView) findViewById(R.id.rvOfertas);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] = obj.getString("nombreProducto")+" "+obj.getString("precioProducto")+"€";
+            puntoVenta[i] = obj.getString("nombreProducto")+" -> "+obj.getString("precioProducto")+"€";
         }
-        recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
+       // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-        recyclerView.setHasFixedSize(true);
+     //   recyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+      // layoutManager = new LinearLayoutManager(this);
+     //   recyclerView.setLayoutManager(layoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new MyAdapter(puntoVenta);
-        recyclerView.setAdapter(mAdapter);
+     //   mAdapter = new MyAdapter(puntoVenta);
+      //  recyclerView.setAdapter(mAdapter);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  puntoVenta);
+
+
+        listview.setAdapter(adapter);
     }
 }
