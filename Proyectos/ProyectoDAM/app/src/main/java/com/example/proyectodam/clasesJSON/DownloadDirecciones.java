@@ -28,9 +28,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
-public class DownloadDirecciones extends AppCompatActivity implements Serializable{
+public class DownloadDirecciones extends AppCompatActivity implements Serializable {
     ArrayList<String> direcciones = new ArrayList<>();
-    Set<Integer> idUnicos = new HashSet<>();
+    ArrayList<String> puntosVenta = new ArrayList<>();
+    String puntoVenta;
     String direccion;
     JSONArray jsonArray;
 
@@ -88,12 +89,18 @@ public class DownloadDirecciones extends AppCompatActivity implements Serializab
         JSONObject obj = jsonArray.getJSONObject(0);
         direccion = obj.getString("callePuntoVenta") + " " + obj.getString("calleNumeroPuntoVenta") + ", " + obj.getString("ciudadPuntoVenta");
         direcciones.add(direccion);
+        puntoVenta=obj.getString("nombrePuntoVenta");
+        puntosVenta.add(puntoVenta);
 
 
     }
 
     public ArrayList<String> getDirecciones() {
         return direcciones;
+    }
+
+    public ArrayList<String> getPuntosVenta() {
+        return puntosVenta;
     }
 }
 /*
