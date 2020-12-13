@@ -59,6 +59,8 @@ INSERT INTO PuntoVenta (nombrePuntoVenta,callePuntoVenta ,calleNumeroPuntoVenta 
 				VALUES ("demoPuntoVenta","Carrer de Pelai", 7,"Barcelona","Barcelona",08001,933019890,"demoPuntoVenta@email.com",1 );
 INSERT INTO PuntoVenta (nombrePuntoVenta,callePuntoVenta ,calleNumeroPuntoVenta ,ciudadPuntoVenta ,provinciaPuntoVenta ,CpPuntoVenta ,telefonoPuntoVenta ,emailPuntoVenta,idEmpresafk) 
 				VALUES ("demoPuntoVenta2","Carrer de Pelai", 8,"Barcelona","Barcelona",08001,933019890,"demoPuntoVenta2@email.com",1 );
+INSERT INTO PuntoVenta (nombrePuntoVenta,callePuntoVenta ,calleNumeroPuntoVenta ,ciudadPuntoVenta ,provinciaPuntoVenta ,CpPuntoVenta ,telefonoPuntoVenta ,emailPuntoVenta,idEmpresafk) 
+				VALUES ("demoPuntoVenta3","Carrer de Pelai", 9,"Barcelona","Barcelona",08001,933019890,"demoPuntoVenta2@email.com",1 );
                 
 INSERT INTO CategoriasProductos (nombreCategoriaProducto ,descripcionCategoriaProducto ) 
 				VALUES ("zapatos","Cosa para no lastimarse los pies" );
@@ -79,3 +81,6 @@ INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,pre
 Select "aa " as nombreProducto, idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1;
 Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos";
 INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,precioProducto,idCategoriaProductofk,idPuntoVentafk) Select "aa" as referenciaProducto,"bb" as nombreProducto,"cc" as descripcionProducto,55 as precioProducto,(Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos") as idCategoriaProductofk,(Select idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1) as idPuntoVentafk FROM DUAL;
+DELETE FROM Productos WHERE idProducto=14;
+DELETE FROM PuntoVenta WHERE nombrePuntoVenta="qq"&&idEmpresafk=1;
+Select idProducto,nombreProducto,precioProducto FROM Productos where idPuntoVentafk in (Select idPuntoVenta From PuntoVenta where nombrePuntoVenta="demoPuntoVenta");
