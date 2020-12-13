@@ -5,14 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.proyectodam.clasesJSON.DownloadDirecciones;
-import com.example.proyectodam.clasesJSON.DownloadProductos;
+import com.example.proyectodam.clasesJSON.DownloadIdPuntosVenta;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,11 +24,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.sql.Connection;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Set;
 
 public class ActivityMain extends AppCompatActivity {
@@ -40,7 +33,7 @@ public class ActivityMain extends AppCompatActivity {
     EditText usu, psw;
     String valor;
     Set<Integer> idPVUnicos;
-    DownloadProductos downloadProductos = new DownloadProductos();
+    DownloadIdPuntosVenta downloadIdPuntosVenta = new DownloadIdPuntosVenta();
 
     int idEmpresa;
 
@@ -51,7 +44,7 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        downloadProductos.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVentafk%20FROM%20Productos");
+        downloadIdPuntosVenta.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVentafk%20FROM%20Productos");
     }
 
     public void clickRegistro(View view) {
@@ -61,7 +54,7 @@ public class ActivityMain extends AppCompatActivity {
 
     public void onClickMapa(View view) throws IOException, JSONException {
         Intent intent = new Intent(this, ActivityMapa.class);
-        idPVUnicos = downloadProductos.getIdPVUnicos();
+        idPVUnicos = downloadIdPuntosVenta.getIdPVUnicos();
 
         ArrayList<Integer> idUnicos = new ArrayList<Integer>(idPVUnicos);
         intent.putIntegerArrayListExtra("idUnicos", idUnicos);

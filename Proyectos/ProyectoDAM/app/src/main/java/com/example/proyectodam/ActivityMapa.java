@@ -3,6 +3,7 @@ package com.example.proyectodam;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.Manifest;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.proyectodam.ClasesMapa.CustomInfoWindowAdapter;
+import com.example.proyectodam.clasesJSON.DownloadDatosProductos;
 import com.example.proyectodam.clasesJSON.DownloadDirecciones;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -26,6 +28,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -33,19 +36,26 @@ import java.util.Locale;
 
 public class ActivityMapa extends FragmentActivity
         implements GoogleMap.OnMyLocationButtonClickListener,
-        OnMapReadyCallback {
+        GoogleMap.OnInfoWindowClickListener,
+        OnMapReadyCallback
+        {
 
     private GoogleMap mMap;
     ArrayList<String> direcciones = new ArrayList<>();
     ArrayList<String> puntosVenta = new ArrayList<>();
     public ArrayList<LatLng> ubicaciones = new ArrayList<>();
-    DownloadDirecciones direccionesClase = new DownloadDirecciones();
+    DownloadDirecciones downloadDirecciones = new DownloadDirecciones();
+    DownloadDatosProductos datosProductos = new DownloadDatosProductos();
+    ArrayList<DownloadDatosProductos> downloadDatosProductos = new ArrayList<>();
     ArrayList<Integer> idPVUnicos;
     private List<Address> localizaciones;
     private LatLng ubica;
 
+            public ActivityMapa() throws IOException {
+            }
 
-    @Override
+
+            @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
@@ -59,8 +69,11 @@ public class ActivityMapa extends FragmentActivity
             idPVUnicos = parametros.getIntegerArrayList("idUnicos");
         }
         for (int i = 0; i < idPVUnicos.size(); i++) {
-            direccionesClase.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombrePuntoVenta,%20callePuntoVenta,%20calleNumeroPuntoVenta,%20ciudadPuntoVenta%20FROM%20PuntoVenta%20where%20idPuntoVenta=" + idPVUnicos.get(i));
+            downloadDirecciones.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombrePuntoVenta,%20callePuntoVenta,%20calleNumeroPuntoVenta,%20ciudadPuntoVenta%20FROM%20PuntoVenta%20where%20idPuntoVenta=" + idPVUnicos.get(i));
+
         }
+                datosProductos.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreProducto,%20descripcionProducto,%20precioProducto,%20idPuntoVentafk%20FROM%20Productos");
+                downloadDatosProductos.add(datosProductos);
 
     }
 
@@ -90,7 +103,10 @@ public class ActivityMapa extends FragmentActivity
 
         mMap.setMyLocationEnabled(true);
         mMap.setOnMyLocationButtonClickListener(this);
-        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        mMap.setOnInfoWindowClickListener(this);
+
+
+            LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = service.getBestProvider(criteria, false);
         Location location = service.getLastKnownLocation(provider);
@@ -111,10 +127,17 @@ public class ActivityMapa extends FragmentActivity
         // (El foco dirige al usuario a su actual ubicación, en caso de que se haya perdido por el mapa. es la respuesta click al boton de arriba a la derecha).
         return false;
     }
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        Intent intent = new Intent(this, ActivityListaProductos.class);
+        String id = marker.getId();
+        //intent.putExtra("productos", downloadDatosProductos);
+        startActivity(intent);
+    }
 
     public void onClickCargar(View view) {
-        direcciones = direccionesClase.getDirecciones();
-        puntosVenta = direccionesClase.getPuntosVenta();
+        direcciones = downloadDirecciones.getDirecciones();
+        puntosVenta = downloadDirecciones.getPuntosVenta();
         Geocoder coder = new Geocoder(this, Locale.getDefault());
 
         for (int i = 0; i < direcciones.size(); i++) {
