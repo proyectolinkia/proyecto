@@ -17,10 +17,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
+        <activity android:name=".ActiviyBorrarOferta"></activity>
         <activity
             android:name=".FormularioOfertasActivity"
             android:label="@string/title_activity_formulario_ofertas"
-            android:theme="@style/Theme.ProyectoDAM.NoActionBar"></activity>
+            android:theme="@style/Theme.ProyectoDAM.NoActionBar" />
         <activity android:name=".MainActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

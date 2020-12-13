@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -61,7 +62,21 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
     }
     public void verOfertas(View view) {
         Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinner);
-        downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27DemoPuntoVenta%27)");
+        String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
+        downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
+    }
+    public void borrarOferta(View view) {
+        Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
+        String idPV=sPuntosVenta.getSelectedItem().toString();
+        Intent intent = new Intent(this, ActiviyBorrarOferta.class);
+        intent.putExtra("id",idEmpresa);
+        intent.putExtra("NombrePV",idPV);
+        startActivity(intent);
+    }
+    public void borrarPuntoVenta(View view) {
+        Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
+        String idPV=sPuntosVenta.getSelectedItem().toString();
+        downloadJSON_BPV("http://35.205.20.239/sqli_6.php?nombrePuntoventa=%27"+idPV+"%27&idEmpresa="+idEmpresa);
     }
     private void downloadJSON(final String urlWebService) {
 
@@ -172,7 +187,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.rvOfertas);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] = obj.getString("nombreProducto")+" -> "+obj.getString("precioProducto")+"€";
+            puntoVenta[i] = obj.getString("idProducto")+obj.getString("nombreProducto")+""+obj.getString("precioProducto")+"€";
         }
        // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
 
@@ -192,4 +207,72 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
 
         listview.setAdapter(adapter);
     }
+    /*************************************************/
+    private void  downloadJSON_BPV(final String urlWebService) {
+
+        class DownloadJSON extends AsyncTask<Void, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                super.onPreExecute();
+            }
+
+
+            @Override
+            protected void onPostExecute(String s) {
+
+                String  valor;
+                String sha1;
+                super.onPostExecute(s);
+                //   Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+                try {
+                    //    jsonArray = new JSONArray(s);
+                    JSONObject obj = new JSONObject(s);
+                    valor = obj.getString("resultado");
+                    if(valor.equals("OK")){
+
+                        Toast toast1 =
+                                Toast.makeText(getApplicationContext(),
+                                        "Punto de Venta Borrado", Toast.LENGTH_SHORT);
+                         toast1.show();
+                        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk="+idEmpresa+"");
+
+                    }else if(valor.equals("NOOK")){
+                        Toast toast1 =
+                                Toast.makeText(getApplicationContext(),
+                                        "Error al borrar el punto de venta.Contacte con el administrador", Toast.LENGTH_SHORT);
+
+                        toast1.show();
+
+                    }
+                    // String  idEmpresa = obj.getString("idEmpresa");
+                } catch (JSONException e) {
+                    // e.printStackTrace();
+                }
+
+
+            }
+
+            @Override
+            protected String doInBackground(Void... voids) {
+                try {
+                    URL url = new URL(urlWebService);
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+                    String json;
+                    while ((json = bufferedReader.readLine()) != null) {
+                        sb.append(json + "\n");
+                    }
+                    return sb.toString().trim();
+                } catch (Exception e) {
+                    return null;
+                }
+            }
+        }
+        DownloadJSON getJSON = new DownloadJSON();
+        getJSON.execute();
+    }
+    /*********************************************/
+
 }
