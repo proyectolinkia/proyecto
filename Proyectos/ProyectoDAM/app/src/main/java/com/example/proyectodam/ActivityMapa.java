@@ -37,8 +37,7 @@ import java.util.Locale;
 public class ActivityMapa extends FragmentActivity
         implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnInfoWindowClickListener,
-        OnMapReadyCallback
-        {
+        OnMapReadyCallback {
 
     private GoogleMap mMap;
     ArrayList<String> direcciones = new ArrayList<>();
@@ -48,14 +47,17 @@ public class ActivityMapa extends FragmentActivity
     DownloadDatosProductos datosProductos = new DownloadDatosProductos();
     ArrayList<DownloadDatosProductos> downloadDatosProductos = new ArrayList<>();
     ArrayList<Integer> idPVUnicos;
+    ArrayList<ArrayList<String>> listaDeProductos = new ArrayList<>();
+
+
     private List<Address> localizaciones;
     private LatLng ubica;
 
-            public ActivityMapa() throws IOException {
-            }
+    public ActivityMapa() throws IOException {
+    }
 
 
-            @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
@@ -72,8 +74,8 @@ public class ActivityMapa extends FragmentActivity
             downloadDirecciones.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombrePuntoVenta,%20callePuntoVenta,%20calleNumeroPuntoVenta,%20ciudadPuntoVenta%20FROM%20PuntoVenta%20where%20idPuntoVenta=" + idPVUnicos.get(i));
 
         }
-                datosProductos.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreProducto,%20descripcionProducto,%20precioProducto,%20idPuntoVentafk%20FROM%20Productos");
-                downloadDatosProductos.add(datosProductos);
+        datosProductos.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreProducto,%20descripcionProducto,%20precioProducto,%20idPuntoVentafk%20FROM%20Productos");
+        downloadDatosProductos.add(datosProductos);
 
     }
 
@@ -106,7 +108,7 @@ public class ActivityMapa extends FragmentActivity
         mMap.setOnInfoWindowClickListener(this);
 
 
-            LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
+        LocationManager service = (LocationManager) getSystemService(LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = service.getBestProvider(criteria, false);
         Location location = service.getLastKnownLocation(provider);
@@ -114,7 +116,6 @@ public class ActivityMapa extends FragmentActivity
         mMap.setMinZoomPreference(15); //AQUI ZOOM MINIMO INICIAL
         mMap.moveCamera(CameraUpdateFactory.newLatLng(miUbica)); //centramos camara en mi ubica
         mMap.setInfoWindowAdapter(new CustomInfoWindowAdapter(LayoutInflater.from(this)));
-
 
     }
 
@@ -127,6 +128,7 @@ public class ActivityMapa extends FragmentActivity
         // (El foco dirige al usuario a su actual ubicación, en caso de que se haya perdido por el mapa. es la respuesta click al boton de arriba a la derecha).
         return false;
     }
+
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent intent = new Intent(this, ActivityListaProductos.class);
@@ -139,6 +141,7 @@ public class ActivityMapa extends FragmentActivity
         direcciones = downloadDirecciones.getDirecciones();
         puntosVenta = downloadDirecciones.getPuntosVenta();
         Geocoder coder = new Geocoder(this, Locale.getDefault());
+        clasificaProductos(idPVUnicos, datosProductos);
 
         for (int i = 0; i < direcciones.size(); i++) {
             try {
@@ -163,6 +166,24 @@ public class ActivityMapa extends FragmentActivity
 
         }
 
+
+    }
+
+    public void clasificaProductos(ArrayList<Integer> idPVUnicos, DownloadDatosProductos datosProductos) {
+        ArrayList<DownloadDatosProductos.Producto> listaProductosClase = datosProductos.getListaProductos();
+
+        for (int j = 1; j < (idPVUnicos.size() + 1); j++) {
+            ArrayList<String> stringProducto = new ArrayList<>();
+            for (int i = 0; i < listaProductosClase.size(); i++) {
+                DownloadDatosProductos.Producto producto = listaProductosClase.get(i);
+                if (producto.getIdPV() == j) {
+                    stringProducto.add("Producto: " + producto.getNombre());
+                    stringProducto.add("Descripción producto: " + producto.getDescripcion());
+                    stringProducto.add("Precio: " + producto.getPrecio() + "€");
+                }
+            }
+            listaDeProductos.add(stringProducto);
+        }
 
     }
 }

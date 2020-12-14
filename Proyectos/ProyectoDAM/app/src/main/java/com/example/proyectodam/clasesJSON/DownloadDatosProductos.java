@@ -112,7 +112,9 @@ public class DownloadDatosProductos {
         }
     }
 
-
+    public ArrayList<Producto> getListaProductos() {
+        return listaProductos;
+    }
 }
 
 
