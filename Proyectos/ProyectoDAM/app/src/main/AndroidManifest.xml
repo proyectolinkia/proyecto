@@ -17,8 +17,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-        <activity android:name=".ActivityListaProductos"></activity>
-        <activity android:name=".ActiviyBorrarOferta"></activity>
+        <activity android:name=".ActivityRegistroEmpresa"></activity>
+        <activity android:name=".ActivityMostrarOfertas" />
+        <activity android:name=".ActivityListaProductos" />
+        <activity android:name=".ActiviyBorrarOferta" />
         <activity
             android:name=".FormularioOfertasActivity"
             android:label="@string/title_activity_formulario_ofertas"
