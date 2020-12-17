@@ -61,9 +61,14 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         startActivity(intent);
     }
     public void verOfertas(View view) {
-        Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinner);
-        String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
-        downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
+      // Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinner);
+     //   String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
+     //   downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
+        Intent intent = new Intent(this, ActivityMostrarOfertas.class);
+        Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
+        String idPV=sPuntosVenta.getSelectedItem().toString();
+        intent.putExtra("nombrePV",idPV);
+        startActivity(intent);
     }
     public void borrarOferta(View view) {
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
