@@ -45,7 +45,10 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         return null;
     }
 
-    public void setPuntoVenta(String puntoVenta) {
+
+
+
+        public void setPuntoVenta(String puntoVenta) {
         this.puntoVenta = puntoVenta;
     }
 }

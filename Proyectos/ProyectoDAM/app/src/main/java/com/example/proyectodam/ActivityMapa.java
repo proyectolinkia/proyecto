@@ -132,8 +132,8 @@ public class ActivityMapa extends FragmentActivity
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent intent = new Intent(this, ActivityListaProductos.class);
-        String id = marker.getId();
-        //intent.putExtra("productos", downloadDatosProductos);
+        int id = (Integer) marker.getTag();
+        intent.putExtra("productos", listaDeProductos.get(id));
         startActivity(intent);
     }
 
@@ -162,7 +162,11 @@ public class ActivityMapa extends FragmentActivity
 
         for (int i = 0; i < ubicaciones.size(); i++) {
 
-            mMap.addMarker(new MarkerOptions().position(ubicaciones.get(i)).title(puntosVenta.get(i)).snippet(direcciones.get(i)));
+            mMap.addMarker(new MarkerOptions()
+                    .position(ubicaciones.get(i))
+                    .title(puntosVenta.get(i))
+                    .snippet(direcciones.get(i))
+                    ).setTag(i);
 
         }
 
