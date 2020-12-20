@@ -29,5 +29,13 @@
     <string name="precioProducto">Precio</string>
     <string name="campoCategoria">Categoria</string>
     <string name="descripcionProducto">Descripción</string>
+    <string name="NombreEm">Nombre Empresa</string>
+    <string name="CalleEm">Calle Empresa</string>
+    <string name="NumCalleEm">Numero</string>
+    <string name="provinciaEm">Provincia</string>
+    <string name="CiudadEm">Ciudad</string>
+    <string name="telefonoEm">Telefono Empresa</string>
+    <string name="emailEm">Email</string>
+    <string name="passEm">Password</string>
     >>>>>>> b06b12f8ae39422f7ec16863eee204a976ace3ee
 </resources>

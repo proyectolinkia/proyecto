@@ -48,7 +48,7 @@ public class ActivityMain extends AppCompatActivity {
     }
 
     public void clickRegistro(View view) {
-        Intent intent = new Intent(this, ActivityFormularioRegistro.class);
+        Intent intent = new Intent(this, ActivityRegistroEmpresa.class);
         startActivity(intent);
     }
 
