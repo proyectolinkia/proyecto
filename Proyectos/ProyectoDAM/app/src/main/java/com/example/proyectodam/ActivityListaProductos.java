@@ -12,7 +12,7 @@ public class ActivityListaProductos extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private MyAdapter mAdapter;
-    ArrayList<String> listaProductos= new ArrayList<>();
+    ArrayList<String> listaProductos = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,9 +36,19 @@ public class ActivityListaProductos extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(layoutManager);
         String[] Productos = new String[listaProductos.size()];
+        int salto = 0;
+        int linea = 0;
 
-        for (int i =0; i<listaProductos.size(); i++){
-            Productos[i]=listaProductos.get(i);
+        for (int i = 0; i < listaProductos.size(); i++) {
+            String saltoProducto = "____________________\nOferta número " + ((i/3) + 1) + " :\n\n";
+
+            if (salto == linea) {
+                Productos[i] = saltoProducto + listaProductos.get(i);
+                salto=salto+3;
+            } else {
+                Productos[i] = listaProductos.get(i);
+            }
+        linea=linea+1;
         }
 
         // Asociamos un adapter (ver más adelante cómo definirlo)
