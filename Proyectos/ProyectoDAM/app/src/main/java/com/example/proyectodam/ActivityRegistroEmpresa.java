@@ -2,6 +2,7 @@ package com.example.proyectodam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +22,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class ActivityRegistroEmpresa extends AppCompatActivity {
-
+    Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,7 +30,7 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
 
     }
     public void onClickGuardarEm(View view) {
-        //   Intent intent = new Intent(this, ActivityPerfilComerciante.class);
+     intent = new Intent(this, ActivityMain.class);
         //   usu = (EditText) findViewById(R.id.campoUsuario); //ojo
         //psw = (EditText) findViewById(R.id.campoPsw);// OJO
         String sha1;
@@ -112,6 +113,7 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
                                         "Error al crear el punto de venta.Contacte con el administrador", Toast.LENGTH_SHORT);
 
                         toast1.show();
+                        startActivity(intent);
 
                     }
                     // String  idEmpresa = obj.getString("idEmpresa");

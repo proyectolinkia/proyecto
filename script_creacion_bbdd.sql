@@ -82,5 +82,5 @@ Select "aa " as nombreProducto, idPuntoVenta FROM PuntoVenta where nombrePuntoVe
 Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos";
 INSERT INTO Productos (referenciaProducto,nombreProducto,descripcionProducto,precioProducto,idCategoriaProductofk,idPuntoVentafk) Select "aa" as referenciaProducto,"bb" as nombreProducto,"cc" as descripcionProducto,55 as precioProducto,(Select idCategoriaProducto From CategoriasProductos where nombreCategoriaProducto="zapatos") as idCategoriaProductofk,(Select idPuntoVenta FROM PuntoVenta where nombrePuntoVenta="demoPuntoVenta"&&idEmpresafk=1) as idPuntoVentafk FROM DUAL;
 DELETE FROM Productos WHERE idProducto=14;
-DELETE FROM PuntoVenta WHERE nombrePuntoVenta="qq"&&idEmpresafk=1;
+DELETE FROM PuntoVenta WHERE nombrePuntoVenta="'demoPuntoVenta2'"&&idEmpresafk=1;
 Select idProducto,nombreProducto,precioProducto FROM Productos where idPuntoVentafk in (Select idPuntoVenta From PuntoVenta where nombrePuntoVenta="demoPuntoVenta");
