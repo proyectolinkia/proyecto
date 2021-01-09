@@ -66,8 +66,8 @@ public class ActivityMain extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityPerfilComerciante.class);
         usu = (EditText) findViewById(R.id.campoUsuario); //ojo
         psw = (EditText) findViewById(R.id.campoPsw);// OJO
-        String nombreEmpresa = usu.getText().toString();
-        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa%20FROM%20Empresas%20where%20nombreEmpresa=%27" + nombreEmpresa + "%27", intent);
+        String emailEmpresa = usu.getText().toString();
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa,%20nombreEmpresa%20FROM%20Empresas%20where%20emailEmpresa=%27" + emailEmpresa + "%27", intent);
     }
 
     private void downloadJSON(final String urlWebService, final Intent intent) {
