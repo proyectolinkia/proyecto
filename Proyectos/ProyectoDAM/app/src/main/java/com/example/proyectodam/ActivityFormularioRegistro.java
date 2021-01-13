@@ -35,7 +35,7 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
      //  downloadJSON("http://35.205.20.239/sqli_2.php?nombre=%27demo4%27");
     }
     public void onClickGuardar(View view) {
-     //   Intent intent = new Intent(this, ActivityPerfilComerciante.class);
+       intent = new Intent(this, ActivityPerfilComerciante.class);
      //   usu = (EditText) findViewById(R.id.campoUsuario); //ojo
         //psw = (EditText) findViewById(R.id.campoPsw);// OJO
 

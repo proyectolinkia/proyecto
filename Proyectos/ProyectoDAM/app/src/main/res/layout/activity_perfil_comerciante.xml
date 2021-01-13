@@ -66,6 +66,7 @@
                 android:layout_marginBottom="15dp"
                 android:onClick="anadePV"
                 android:text="Añadir Punto de Venta" />
+
             <Button
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
@@ -75,6 +76,7 @@
                 android:layout_marginBottom="15dp"
                 android:onClick="verOfertas"
                 android:text="Ver Ofertas Punto Venta" />
+
             <Button
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
