@@ -106,7 +106,7 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
 
                         toast1.show();
                      //   intent.putExtra("idEmpresa", idEmpresa);
-                    //    startActivity(intent);
+                        startActivity(intent);
                     }else if(valor.equals("NOOK")){
                         Toast toast1 =
                                 Toast.makeText(getApplicationContext(),
@@ -114,7 +114,6 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
 
                         toast1.show();
                         startActivity(intent);
-
                     }
                     // String  idEmpresa = obj.getString("idEmpresa");
                 } catch (JSONException e) {
