@@ -45,6 +45,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk="+idEmpresa+"");
 
 
+
     }
 
     public void anadePV(View view) {
@@ -62,8 +63,8 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
     }
     public void verOfertas(View view) {
       // Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinner);
-     //   String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
-     //   downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
+       // String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
+    //  downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
         Intent intent = new Intent(this, ActivityMostrarOfertas.class);
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         String idPV=sPuntosVenta.getSelectedItem().toString();
@@ -81,6 +82,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
     public void borrarPuntoVenta(View view) {
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         String idPV=sPuntosVenta.getSelectedItem().toString();
+        idPV=idPV.replace(" ","%20");
         downloadJSON_BPV("http://35.205.20.239/sqli_6.php?nombrePuntoventa=%27"+idPV+"%27&idEmpresa="+idEmpresa);
     }
     private void downloadJSON(final String urlWebService) {
@@ -119,6 +121,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
                 } catch (Exception e) {
                     return null;
                 }
+
             }
         }
         DownloadJSON getJSON = new DownloadJSON();
@@ -140,79 +143,79 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
 
 
     /**************************************/
-    private void downloadJSON_rv(final String urlWebService) {
-
-        class DownloadJSON_rv extends AsyncTask<Void, Void, String> {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-
-            @Override
-            protected void onPostExecute(String s) {
-                try {
-                    loadIntoRV(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-
-
-            }
-
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e) {
-                    return null;
-                }
-            }
-        }
-        DownloadJSON_rv getJSON = new DownloadJSON_rv();
-        getJSON.execute();
-    }
-
-    private void loadIntoRV(String json) throws JSONException {
-       //  RecyclerView recyclerView;
-      //   RecyclerView.Adapter mAdapter;
-     //   RecyclerView.LayoutManager layoutManager;
-        JSONArray jsonArray = new JSONArray(json);
-        String[] puntoVenta = new String[jsonArray.length()];
-       ListView listview;
-        listview = (ListView) findViewById(R.id.rvOfertas);
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] = obj.getString("idProducto")+obj.getString("nombreProducto")+""+obj.getString("precioProducto")+"€";
-        }
-       // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
-
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-     //   recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-      // layoutManager = new LinearLayoutManager(this);
-     //   recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-     //   mAdapter = new MyAdapter(puntoVenta);
-      //  recyclerView.setAdapter(mAdapter);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  puntoVenta);
-
-
-        listview.setAdapter(adapter);
-    }
-    /*************************************************/
+//    private void downloadJSON(final String urlWebService) {
+//
+//        class DownloadJSON_rv extends AsyncTask<Void, Void, String> {
+//
+//            @Override
+//            protected void onPreExecute() {
+//                super.onPreExecute();
+//            }
+//
+//
+//            @Override
+//            protected void onPostExecute(String s) {
+//                try {
+//                    loadIntoRV(s);
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//
+//
+//            }
+//
+//            @Override
+//            protected String doInBackground(Void... voids) {
+//                try {
+//                    URL url = new URL(urlWebService);
+//                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//                    StringBuilder sb = new StringBuilder();
+//                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//                    String json;
+//                    while ((json = bufferedReader.readLine()) != null) {
+//                        sb.append(json + "\n");
+//                    }
+//                    return sb.toString().trim();
+//                } catch (Exception e) {
+//                    return null;
+//                }
+//            }
+//        }
+//        DownloadJSON_rv getJSON = new DownloadJSON_rv();
+//        getJSON.execute();
+//    }
+//
+//    private void loadIntoRV(String json) throws JSONException {
+////         RecyclerView recyclerView;
+////         RecyclerView.Adapter mAdapter;
+////        RecyclerView.LayoutManager layoutManager;
+//        JSONArray jsonArray = new JSONArray(json);
+//        String[] puntoVenta = new String[jsonArray.length()];
+//       ListView listview;
+//        listview = (ListView) findViewById(R.id.rvOfertas);
+//        for (int i = 0; i < jsonArray.length(); i++) {
+//            JSONObject obj = jsonArray.getJSONObject(i);
+//            puntoVenta[i] = obj.getString("idProducto")+obj.getString("nombreProducto")+""+obj.getString("precioProducto")+"€";
+//        }
+//       // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
+//
+//        // use this setting to improve performance if you know that changes
+//        // in content do not change the layout size of the RecyclerView
+//     //   recyclerView.setHasFixedSize(true);
+//
+//        // use a linear layout manager
+//      // layoutManager = new LinearLayoutManager(this);
+//     //   recyclerView.setLayoutManager(layoutManager);
+//
+//        // specify an adapter (see also next example)
+//     //   mAdapter = new MyAdapter(puntoVenta);
+//      //  recyclerView.setAdapter(mAdapter);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  puntoVenta);
+//
+//
+//        listview.setAdapter(adapter);
+//    }
+//    /*************************************************/
     private void  downloadJSON_BPV(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {

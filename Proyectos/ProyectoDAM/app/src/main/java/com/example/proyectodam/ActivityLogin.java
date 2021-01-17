@@ -16,7 +16,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -24,56 +23,34 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.Set;
 
-public class ActivityMain extends AppCompatActivity {
-
-    // DECLARO VARIABLES DE CONEXION
-    EditText usu, psw;
+public class ActivityLogin extends AppCompatActivity {
+  EditText usu, psw;
     String valor;
     Set<Integer> idPVUnicos;
-    DownloadIdPuntosVenta downloadIdPuntosVenta = new DownloadIdPuntosVenta();
+
 
     int idEmpresa;
-
-    public ActivityMain() throws IOException {
-    }
-
+    String nombreEmpresa;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        downloadIdPuntosVenta.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVentafk%20FROM%20Productos");
+        setContentView(R.layout.activity_login);
     }
-
-//    public void clickRegistro(View view) {
-//        Intent intent = new Intent(this, ActivityRegistroEmpresa.class);
-//        startActivity(intent);
-//    }
-//
-    public void onClickPublicar(View view) {
-    Intent intent = new Intent(this, ActivityLogin.class);
-    startActivity(intent);
-    }
-    public void onClickMapa(View view) throws IOException, JSONException {
-        Intent intent = new Intent(this, ActivityMapa.class);
-        idPVUnicos = downloadIdPuntosVenta.getIdPVUnicos();
-
-        ArrayList<Integer> idUnicos = new ArrayList<Integer>(idPVUnicos);
-        intent.putIntegerArrayListExtra("idUnicos", idUnicos);
+        public void clickRegistro(View view) {
+        Intent intent = new Intent(this, ActivityRegistroEmpresa.class);
         startActivity(intent);
-
     }
-//
-//    public void onClickContinuar(View view) {
-//        Intent intent = new Intent(this, ActivityPerfilComerciante.class);
-//        usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-//        psw = (EditText) findViewById(R.id.campoPsw);// OJO
-//        String emailEmpresa = usu.getText().toString();
-//        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa,%20nombreEmpresa%20FROM%20Empresas%20where%20emailEmpresa=%27" + emailEmpresa + "%27", intent);
-//    }
-//
+
+    public void onClickContinuar(View view) {
+        Intent intent = new Intent(this, ActivityPerfilComerciante.class);
+        usu = (EditText) findViewById(R.id.campoUsuario); //ojo
+        psw = (EditText) findViewById(R.id.campoPsw);// OJO
+        String emailEmpresa = usu.getText().toString();
+        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa,%20nombreEmpresa%20FROM%20Empresas%20where%20emailEmpresa=%27" + emailEmpresa + "%27", intent);
+    }
+
     private void downloadJSON(final String urlWebService, final Intent intent) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -94,6 +71,7 @@ public class ActivityMain extends AppCompatActivity {
                     JSONObject obj = jsonArray.getJSONObject(0);
                     valor = obj.getString("pswrd");
                     idEmpresa = obj.getInt("idEmpresa");
+                    nombreEmpresa=obj.getString("nombreEmpresa");
                 } catch (JSONException e) {
                 }
 
@@ -114,7 +92,7 @@ public class ActivityMain extends AppCompatActivity {
 
                 if (sha1.equals(valor)) {
                     intent.putExtra("idEmpresa", idEmpresa);
-                    intent.putExtra("nombreEmpresa", usu.getText().toString());
+                    intent.putExtra("nombreEmpresa", nombreEmpresa);
                     startActivity(intent);
                 } else {
                     Toast toast1 =
@@ -153,5 +131,4 @@ public class ActivityMain extends AppCompatActivity {
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
 }

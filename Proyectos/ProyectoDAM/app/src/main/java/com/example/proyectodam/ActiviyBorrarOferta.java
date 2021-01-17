@@ -32,6 +32,7 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
         Bundle parametros = this.getIntent().getExtras();
         idEmpresa=parametros.getInt("id");
         puntoVenta=parametros.getString("NombrePV");
+        puntoVenta=puntoVenta.replace(" ","%20");
         downloadJSON_sp("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+puntoVenta+"%27)");
     }
 

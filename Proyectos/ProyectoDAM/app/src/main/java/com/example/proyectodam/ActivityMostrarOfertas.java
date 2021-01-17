@@ -18,12 +18,14 @@ import java.net.URL;
 
 public class ActivityMostrarOfertas extends AppCompatActivity {
     String nombrePV;
+    String nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_ofertas);
         Bundle parametros = this.getIntent().getExtras();
         nombrePV = parametros.getString("nombrePV");
+        nombrePV=nombrePV.replace(" ","%20");
         downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
     }
     private void downloadJSON_rv(final String urlWebService) {
@@ -78,7 +80,7 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.rvOfertas);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] = obj.getString("idProducto")+obj.getString("nombreProducto")+""+obj.getString("precioProducto")+"€";
+            puntoVenta[i] =" "+ obj.getString("idProducto")+" "+obj.getString("nombreProducto")+" "+obj.getString("precioProducto")+"€";
         }
         // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
 

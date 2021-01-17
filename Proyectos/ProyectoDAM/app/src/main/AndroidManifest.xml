@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProyectoDAM">
-        <activity android:name=".ActivityRegistroEmpresa"></activity>
+        <activity android:name=".ActivityLogin"></activity>
+        <activity android:name=".ActivityRegistroEmpresa" />
         <activity android:name=".ActivityMostrarOfertas" />
         <activity android:name=".ActivityListaProductos" />
         <activity android:name=".ActiviyBorrarOferta" />
