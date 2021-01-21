@@ -49,13 +49,11 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="259dp"
-        android:layout_height="112dp"
+        android:layout_height="wrap_content"
+        android:paddingTop="50dp"
         app:srcCompat="@drawable/logo" />
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
+
 
 </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="nombre_app">ProyectoDAM</string>
+    <string name="nombre_app">MiBarrio</string>
     <string name="registro">Nuevo usuario? Regístrate aquí</string>
     <string name="continuar">Continuar</string>
     <string name="contraseña">Contraseña</string>

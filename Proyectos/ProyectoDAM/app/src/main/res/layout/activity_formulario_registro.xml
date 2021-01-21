@@ -9,277 +9,183 @@
     android:orientation="vertical"
     tools:context=".ActivityFormularioRegistro">
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="440dp"
-       >
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="@string/NombrePV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campoNombrePV"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:gravity="center"
-                android:textSize="17dp" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-                 android:text="@string/CallePV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campoCallePV"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="17dp"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-
-                android:text="@string/NumCallePV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/campoNumCallePV"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="13dp"
-                android:inputType="numberDecimal"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-
-                android:text="@string/CiudadPV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans"
-                />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/CiudadPV"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="17dp"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:gravity="center"/>
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-
-                android:text="@string/CpPV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/cpPV"
-                android:layout_width="match_parent"
-                android:textSize="13dp"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:layout_height="30dp"
-                android:inputType="numberDecimal"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-
-                android:text="@string/provinciaPV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/provinciaPV"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textSize="17dp"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-
-                android:text="@string/telefonoPV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/telefonoPV"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:inputType="numberDecimal"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:textSize="13dp"
-                android:gravity="center"/>
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="@string/emailPV"
-                android:textColor="#000000"
-                android:textSize="17dp"
-                android:textStyle="bold"
-                android:typeface="sans" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:gravity="center">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/emailPV"
-                android:layout_width="match_parent"
-                android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
-                android:textSize="17dp"
-                android:layout_height="30dp"
-                android:gravity="center"/>
-        </TableRow>
-    </TableLayout>
-
     <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="341dp"
+        android:layout_height="500dp"
         app:cardCornerRadius="25dp">
-        <Button
-            android:id="@+id/button"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="onClickGuardar"
-            android:text="Button" />
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="Formulario de registro"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:typeface="sans" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="385dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:orientation="vertical">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/filledTextField"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/NombrePV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/campoNombrePV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/CallePV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/campoCallePV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/NumCallePV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/campoNumCallePV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="1234567890"
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/CiudadPV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/CiudadPV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/CpPV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/cpPV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="1234567890"
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/provinciaPV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/provinciaPV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/telefonoPV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/telefonoPV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="1234567890+"
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/emailPV"
+                    android:padding="4dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/emailPV"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@."
+                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <Button
+                    android:id="@+id/button"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="10dp"
+                    android:onClick="onClickGuardar"
+                    android:text="REGISTRAR PUNTO DE VENTA" />
+            </LinearLayout>
+        </ScrollView>
+        </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="259dp"
+        android:layout_height="93dp"
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/logo" />
 
 
 </LinearLayout>

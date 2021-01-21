@@ -30,28 +30,39 @@
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:typeface="sans" />
+
             <Spinner
                 android:id="@+id/spinnerBo"
                 android:layout_width="347dp"
-                android:layout_height="47dp"
+                android:layout_height="43dp"
                 android:gravity="center"
                 android:paddingTop="10dp"
                 android:paddingBottom="5dp"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp"
+            android:onClick="borrarOfertaF"
+            android:text="Borrar Oferta" />
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
-    <Button
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
-        android:onClick="borrarOfertaF"
-        android:text="Borrar Oferta" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="259dp"
+        android:layout_height="164dp"
+        android:paddingTop="10dp"
+        app:srcCompat="@drawable/logo" />
+
 
 
 </LinearLayout>
