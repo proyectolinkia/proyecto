@@ -87,6 +87,4 @@ Select idProducto,nombreProducto,precioProducto FROM Productos where idPuntoVent
 
 ALTER SCHEMA `appmibarrio`  charset=utf8;
 SELECT schema_name AS 'database', default_character_set_name AS 'charset',default_collation_name AS 'collation' FROM information_schema.SCHEMATA WHERE schema_name = 'appmibarrio';
-ei9 ikj senirerui eu8wriioooooooooooo0p`j`0`pku`ñ  `ñ´p+
-p´ñ
- t6uf rt5< 
+ALTER TABLE Productos MODIFY COLUMN precioProducto float;

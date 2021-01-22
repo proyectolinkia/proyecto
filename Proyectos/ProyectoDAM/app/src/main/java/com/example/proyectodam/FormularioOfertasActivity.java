@@ -35,23 +35,13 @@ public class FormularioOfertasActivity extends AppCompatActivity {
         intent = new Intent(this, ActivityPerfilComerciante.class);
         setContentView(R.layout.formulario_ofertas);
         Bundle parametros = this.getIntent().getExtras();
-
+        //Obtenemos los datos de la empresa y el punto de venta
         if(parametros !=null){
             idEmpresa = parametros.getInt("idEmpresa");
             nombrePV = parametros.getString("nombrePV");
 
         }
-      //  Toolbar toolbar = findViewById(R.id.toolbar);
-     //   setSupportActionBar(toolbar);
-
-      //  FloatingActionButton fab = findViewById(R.id.fab);
-      /*  fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
+      //Cargamos las categorías de productos
         downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreCategoriaProducto%20FROM%20CategoriasProductos%20");
     }
     private void downloadJSON(final String urlWebService) {
@@ -95,7 +85,7 @@ public class FormularioOfertasActivity extends AppCompatActivity {
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
+      //Cargamos los datos obtenidos en el json el spinner
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
         String[] categorias= new String[jsonArray.length()];
@@ -108,10 +98,10 @@ public class FormularioOfertasActivity extends AppCompatActivity {
         sCategorias.setAdapter(arrayAdapter);
 
     }
+
+    //Guardamos la oferta en bbdd
     public void onClickGuardarOferta(View view) {
-        //   Intent intent = new Intent(this, ActivityPerfilComerciante.class);
-        //   usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-        //psw = (EditText) findViewById(R.id.campoPsw);// OJO
+
         EditText referencia=(EditText) findViewById(R.id.campoReferencia);
         EditText nombre=(EditText) findViewById(R.id.campoDenominacionProd);
         EditText descripcion=(EditText) findViewById(R.id.campoDescripcionProd);
@@ -125,14 +115,14 @@ public class FormularioOfertasActivity extends AppCompatActivity {
         String categoriaP= sCategorias.getSelectedItem().toString();
 
 
-        //  downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
+        //Ejecutamos la consulta en bbdd
         downloadJSONGO("http://35.205.20.239/sqli_4.php?referencia=%27"+referenciaP+"%27&nombre=%27"+nombreP+"%27&descripcion=%27"+descripcionP+"%27&precio="+precioP+"&nombreCategoria=%27"+categoriaP+"%27&" +
                 "&nombrePuntoVenta=%27"+nombrePV+"%27&idEmpresa="+idEmpresa+"");
-        //$nombre,$calle,$numero,$ciudad,$provincia,$cp,$telefono,$email,$idEmpresa
+
     }
-    //   startActivity(intent);
 
 
+ //Ejecución del guardado en BBDD
     private void downloadJSONGO(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -142,7 +132,7 @@ public class FormularioOfertasActivity extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+           //Obtenemos el resultado del guardado en un json
             @Override
             protected void onPostExecute(String s) {
 

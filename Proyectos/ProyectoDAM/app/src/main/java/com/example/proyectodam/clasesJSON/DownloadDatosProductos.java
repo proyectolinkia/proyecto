@@ -14,7 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
+//Clase con los metodos necesarios para obtener los productos guardados en BBDD
 public class DownloadDatosProductos {
     ArrayList<Producto> listaProductos = new ArrayList<>();
     Producto producto;
@@ -65,7 +65,7 @@ public class DownloadDatosProductos {
                 super.onPreExecute();
             }
 
-
+            //Tratamos los datos obtenidos en formato json
             @Override
             protected void onPostExecute(String s) {
                 try {
@@ -76,7 +76,7 @@ public class DownloadDatosProductos {
 
 
             }
-
+             //Ejecutamos la consulta y obtenemos un json
             @Override
             protected String doInBackground(Void... voids) {
                 try {

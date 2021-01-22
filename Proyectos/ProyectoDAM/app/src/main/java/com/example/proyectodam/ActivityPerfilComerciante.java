@@ -22,7 +22,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+//Area de la empresa
 public class ActivityPerfilComerciante extends AppCompatActivity {
 
     int idEmpresa;
@@ -36,23 +36,25 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         setContentView(R.layout.activity_perfil_comerciante);
         final TextView txtEmpresa = findViewById(R.id.txtEmpresa);
         Bundle parametros = this.getIntent().getExtras();
-
+          //Obtenemos los datos del area de login
         if(parametros !=null){
              idEmpresa = parametros.getInt("idEmpresa");
              nombreEmpresa = parametros.getString("nombreEmpresa");
             txtEmpresa.setText(nombreEmpresa);
         }
+        //otenemos los puntos de venta
         downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVenta,nombrePuntoVenta%20FROM%20PuntoVenta%20where%20idEmpresafk="+idEmpresa+"");
 
 
 
     }
-
+  //Para añadir un punto de venta
     public void anadePV(View view) {
         Intent intent = new Intent(this, ActivityFormularioRegistro.class);
         intent.putExtra("id",idEmpresa);
         startActivity(intent);
     }
+    //Para añadir ofertas
     public void anadeOferta(View view) {
         Intent intent = new Intent(this, FormularioOfertasActivity.class);
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
@@ -61,16 +63,17 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         intent.putExtra("idEmpresa",idEmpresa);
         startActivity(intent);
     }
+
+    //Para ver las ofertas
     public void verOfertas(View view) {
-      // Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinner);
-       // String nombrePV=sPuntosVentaSel.getSelectedItem().toString();
-    //  downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
+
         Intent intent = new Intent(this, ActivityMostrarOfertas.class);
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         String idPV=sPuntosVenta.getSelectedItem().toString();
         intent.putExtra("nombrePV",idPV);
         startActivity(intent);
     }
+    //Para borrar una oferta
     public void borrarOferta(View view) {
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         String idPV=sPuntosVenta.getSelectedItem().toString();
@@ -79,12 +82,15 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         intent.putExtra("NombrePV",idPV);
         startActivity(intent);
     }
+    //Para borrar un punto de venta
     public void borrarPuntoVenta(View view) {
         Spinner sPuntosVenta = (Spinner) findViewById(R.id.spinner);
         String idPV=sPuntosVenta.getSelectedItem().toString();
         idPV=idPV.replace(" ","%20");
         downloadJSON_BPV("http://35.205.20.239/sqli_6.php?nombrePuntoventa=%27"+idPV+"%27&idEmpresa="+idEmpresa);
     }
+
+    //Obtenemos los puntos de venta desde la consulta
     private void downloadJSON(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -94,7 +100,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+           //Cargamos los datos obtenidos en un Spinner
             @Override
             protected void onPostExecute(String s) {
                 try {
@@ -127,7 +133,7 @@ public class ActivityPerfilComerciante extends AppCompatActivity {
         DownloadJSON getJSON = new DownloadJSON();
         getJSON.execute();
     }
-
+      //Realizamos la carga en el spinner
     private void loadIntoListView(String json) throws JSONException {
         JSONArray jsonArray = new JSONArray(json);
         String[] puntoVenta = new String[jsonArray.length()];

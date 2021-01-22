@@ -15,7 +15,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+//Mostraremos las ofertas del punto de venta seleccionado
 public class ActivityMostrarOfertas extends AppCompatActivity {
     String nombrePV;
     String nombre;
@@ -24,8 +24,11 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mostrar_ofertas);
         Bundle parametros = this.getIntent().getExtras();
+        //Recibimos el punto de venta
         nombrePV = parametros.getString("nombrePV");
+        //Sustituimos los espacios en blanco para poder realizar la consulta con HttpURLConnection
         nombrePV=nombrePV.replace(" ","%20");
+        //Obtenemos los datos
         downloadJSON_rv("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+nombrePV+"%27)");
     }
     private void downloadJSON_rv(final String urlWebService) {
@@ -37,7 +40,7 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+             //Una vez recibidos los datos los mostramos en un listView
             @Override
             protected void onPostExecute(String s) {
                 try {
@@ -48,7 +51,7 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
 
 
             }
-
+            //Obtenemos los datos en un json
             @Override
             protected String doInBackground(Void... voids) {
                 try {
@@ -69,11 +72,9 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
         DownloadJSON_rv getJSON = new DownloadJSON_rv();
         getJSON.execute();
     }
-
+    //Cargamos los datos en un ListView
     private void loadIntoRV(String json) throws JSONException {
-        //  RecyclerView recyclerView;
-        //   RecyclerView.Adapter mAdapter;
-        //   RecyclerView.LayoutManager layoutManager;
+
         JSONArray jsonArray = new JSONArray(json);
         String[] puntoVenta = new String[jsonArray.length()];
         ListView listview;
@@ -82,19 +83,7 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             puntoVenta[i] =" "+ obj.getString("idProducto")+" "+obj.getString("nombreProducto")+" "+obj.getString("precioProducto")+"€";
         }
-        // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        //   recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        // layoutManager = new LinearLayoutManager(this);
-        //   recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        //   mAdapter = new MyAdapter(puntoVenta);
-        //  recyclerView.setAdapter(mAdapter);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  puntoVenta);
 
 

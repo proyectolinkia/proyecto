@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
+//Clase con los metodos necesarios para obtener los id de puntos de venta guardados en BBDD
 public class DownloadIdPuntosVenta {
 
     ArrayList<Integer> idPV = new ArrayList<>();
@@ -33,6 +33,7 @@ public class DownloadIdPuntosVenta {
         downloadJSON(url);
 
     }
+    //Ejecucion de la consulta
     public void downloadJSON(final String urlWebService) {
     class DownloadJSON extends AsyncTask<Void, Void, String> {
 
@@ -41,7 +42,7 @@ public class DownloadIdPuntosVenta {
             super.onPreExecute();
         }
 
-
+       //Tratamos los datos obtenidos en formato json
         @Override
         protected void onPostExecute(String s) {
             try {
@@ -52,7 +53,7 @@ public class DownloadIdPuntosVenta {
 
 
         }
-
+        //Ejecutamos la consulta y obtenemos un json
         @Override
         protected String doInBackground(Void... voids) {
             try {

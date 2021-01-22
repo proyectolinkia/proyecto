@@ -20,7 +20,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+//Para registrar una empresa
 public class ActivityRegistroEmpresa extends AppCompatActivity {
     Intent intent;
     @Override
@@ -29,10 +29,10 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
         setContentView(R.layout.activity_registro_empresa);
 
     }
+    //Al pulsar obtenemos los datos y realizamos el guardado en BBDD
     public void onClickGuardarEm(View view) {
      intent = new Intent(this, ActivityMain.class);
-        //   usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-        //psw = (EditText) findViewById(R.id.campoPsw);// OJO
+
         String sha1;
         EditText nombreEmpresa=(EditText) findViewById(R.id.campoNombreEm);
         EditText calleEmpresa=(EditText) findViewById(R.id.campoCalleEm);
@@ -67,16 +67,17 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
+        //Guardamos el password codificado
         sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
 
-        //  downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
+       //Realizamos el guardado
         downloadJSON("http://35.205.20.239/sqli_2_em.php?nombre=%27"+snombreEm+"%27&calle=%27"+scalleEm+"%27&numero="+snumeroEm+"&ciudad=%27"+sciudadEm+"%27&provincia=%27"+sprovinciaEm+"%27&cp="+scpEm+"&telefono="+stelEm+"" +
                 "&email=%27"+semailEm+"%27&passEmpresa=%27"+sha1+"%27");
-        //$nombre,$calle,$numero,$ciudad,$provincia,$cp,$telefono,$email,$idEmpresa
+
     }
-    //   startActivity(intent);
 
 
+// Ejecutamos la consulta y recibimos un json con el resultado
     private void downloadJSON(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -93,9 +94,9 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
                 String  valor;
                 String sha1;
                 super.onPostExecute(s);
-                //   Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
+
                 try {
-                    //    jsonArray = new JSONArray(s);
+
                     JSONObject obj = new JSONObject(s);
                     valor = obj.getString("resultado");
                     if(valor.equals("OK")){
@@ -105,7 +106,7 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
                                         "Punto de venta creado", Toast.LENGTH_SHORT);
 
                         toast1.show();
-                     //   intent.putExtra("idEmpresa", idEmpresa);
+
                         startActivity(intent);
                     }else if(valor.equals("NOOK")){
                         Toast toast1 =
@@ -115,9 +116,9 @@ public class ActivityRegistroEmpresa extends AppCompatActivity {
                         toast1.show();
                         startActivity(intent);
                     }
-                    // String  idEmpresa = obj.getString("idEmpresa");
+
                 } catch (JSONException e) {
-                    // e.printStackTrace();
+
                 }
 
 

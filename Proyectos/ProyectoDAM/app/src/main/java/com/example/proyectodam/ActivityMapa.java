@@ -33,12 +33,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-
+//Visualizamos el mapa
 public class ActivityMapa extends FragmentActivity
         implements GoogleMap.OnMyLocationButtonClickListener,
         GoogleMap.OnInfoWindowClickListener,
         OnMapReadyCallback {
-
+    //Declaramos e incializamos todas las variables y clases
     private GoogleMap mMap;
     ArrayList<String> direcciones = new ArrayList<>();
     ArrayList<String> puntosVenta = new ArrayList<>();
@@ -66,14 +66,16 @@ public class ActivityMapa extends FragmentActivity
         mapFragment.getMapAsync(this);
         Bundle parametros = this.getIntent().getExtras();
 
-
+         //Obtenemos los ids obtenidos al iniciar la aplicacion desde la consulta a BBDD
         if (parametros != null) {
             idPVUnicos = parametros.getIntegerArrayList("idUnicos");
         }
+        //Obtenemos las direcciones
         for (int i = 0; i < idPVUnicos.size(); i++) {
             downloadDirecciones.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombrePuntoVenta,%20callePuntoVenta,%20calleNumeroPuntoVenta,%20ciudadPuntoVenta%20FROM%20PuntoVenta%20where%20idPuntoVenta=" + idPVUnicos.get(i));
 
         }
+        //Obtenemos los productos
         datosProductos.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20nombreProducto,%20descripcionProducto,%20precioProducto,%20idPuntoVentafk%20FROM%20Productos");
         downloadDatosProductos.add(datosProductos);
 
@@ -129,6 +131,7 @@ public class ActivityMapa extends FragmentActivity
         return false;
     }
 
+    //Para mostrar los productos del punto de venta
     @Override
     public void onInfoWindowClick(Marker marker) {
         Intent intent = new Intent(this, ActivityListaProductos.class);
@@ -137,6 +140,7 @@ public class ActivityMapa extends FragmentActivity
         startActivity(intent);
     }
 
+    //Realizamos la carga de todos los datos obtenidos previamente y los mostramos
     public void onClickCargar(View view) {
         direcciones = downloadDirecciones.getDirecciones();
         puntosVenta = downloadDirecciones.getPuntosVenta();
@@ -172,7 +176,7 @@ public class ActivityMapa extends FragmentActivity
 
 
     }
-
+//Realizamos la relación de productos contra punto de venta
     public void clasificaProductos(ArrayList<Integer> idPVUnicos, DownloadDatosProductos datosProductos) {
         ArrayList<DownloadDatosProductos.Producto> listaProductosClase = datosProductos.getListaProductos();
 

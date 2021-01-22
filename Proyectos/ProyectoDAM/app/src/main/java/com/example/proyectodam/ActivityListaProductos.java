@@ -7,7 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import java.util.ArrayList;
-
+//Utilizamos esta clase para realizar la carga de las ofertas en
+//el detalle del mapa
 public class ActivityListaProductos extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;

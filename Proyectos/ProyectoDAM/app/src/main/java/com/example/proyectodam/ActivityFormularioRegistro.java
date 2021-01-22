@@ -31,13 +31,14 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_registro);
         Bundle parametros = this.getIntent().getExtras();
+        //Obtenemos el identificador de la empresa para utilizarlo en la consulta
         idEmpresa=parametros.getInt("id");
-     //  downloadJSON("http://35.205.20.239/sqli_2.php?nombre=%27demo4%27");
+
     }
+    //Al guardar obtenemos los datos desde el formulario y ejecutamos el guardado
     public void onClickGuardar(View view) {
        intent = new Intent(this, ActivityPerfilComerciante.class);
-     //   usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-        //psw = (EditText) findViewById(R.id.campoPsw);// OJO
+
 
         EditText nombreEmpresa=(EditText) findViewById(R.id.campoNombrePV);
         EditText calleEmpresa=(EditText) findViewById(R.id.campoCallePV);
@@ -58,12 +59,12 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
         String stelEm=telEmpresa.getText().toString();
         String semailEm=emailEmpresa.getText().toString();
 
-        //  downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd%20FROM%20Empresas%20where%20nombreEmpresa=%27"+usu+"%27");
+       //Ejecutamos el guardado en la BBDD utilizando un php específico
         downloadJSON("http://35.205.20.239/sqli_2.php?nombre=%27"+snombreEm+"%27&calle=%27"+scalleEm+"%27&numero="+snumeroEm+"&ciudad=%27"+sciudadEm+"%27&provincia=%27"+sprovinciaEm+"%27&cp="+scpEm+"&telefono="+stelEm+"" +
                 "&email=%27"+semailEm+"%27&idEmpresa="+idEmpresa+"");
-        //$nombre,$calle,$numero,$ciudad,$provincia,$cp,$telefono,$email,$idEmpresa
+
     }
-        //   startActivity(intent);
+
 
 
     private void downloadJSON(final String urlWebService) {
@@ -75,7 +76,8 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+           //Comprobamos el resultado del json y en función del resultado
+           //enviamos un mensaje de ok o de error
             @Override
             protected void onPostExecute(String s) {
 
@@ -111,7 +113,7 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
 
 
             }
-
+            //Ejecutamos el guardado y recibimos la respuesta medidante un json
             @Override
             protected String doInBackground(Void... voids) {
                 try {

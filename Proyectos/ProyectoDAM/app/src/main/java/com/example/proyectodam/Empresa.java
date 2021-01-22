@@ -1,5 +1,5 @@
 package com.example.proyectodam;
-
+//Clase Empresa
 public class Empresa {
     int idEmpresa;
     String nombreEmpresa;

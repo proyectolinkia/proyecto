@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
-
+//Clase con los metodos necesarios para obtener las direcciones guardados en BBDD
 public class DownloadDirecciones extends AppCompatActivity implements Serializable {
     ArrayList<String> direcciones = new ArrayList<>();
     ArrayList<String> puntosVenta = new ArrayList<>();
@@ -46,7 +46,7 @@ public class DownloadDirecciones extends AppCompatActivity implements Serializab
                 super.onPreExecute();
             }
 
-
+            //Tratamos los datos obtenidos en formato json
             @Override
             protected void onPostExecute(String s) {
                 try {
@@ -57,7 +57,7 @@ public class DownloadDirecciones extends AppCompatActivity implements Serializab
 
 
             }
-
+            //Ejecutamos la consulta y obtenemos un json
             @Override
             protected String doInBackground(Void... voids) {
                 try {

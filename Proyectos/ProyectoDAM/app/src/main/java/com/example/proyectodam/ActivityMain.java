@@ -44,18 +44,17 @@ public class ActivityMain extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Al iniciar realizamos una conexion a la bbdd para obtener todos lo puntos de venta
+
         downloadIdPuntosVenta.downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20idPuntoVentafk%20FROM%20Productos");
     }
 
-//    public void clickRegistro(View view) {
-//        Intent intent = new Intent(this, ActivityRegistroEmpresa.class);
-//        startActivity(intent);
-//    }
-//
+    //Al pulsar el botón abro la pantalla para que la empresa realice el login
     public void onClickPublicar(View view) {
     Intent intent = new Intent(this, ActivityLogin.class);
     startActivity(intent);
     }
+    //Al pulsar el botón abro la pantalla para visualizar el mapa de ofertas
     public void onClickMapa(View view) throws IOException, JSONException {
         Intent intent = new Intent(this, ActivityMapa.class);
         idPVUnicos = downloadIdPuntosVenta.getIdPVUnicos();
@@ -65,93 +64,88 @@ public class ActivityMain extends AppCompatActivity {
         startActivity(intent);
 
     }
+    //Este el metodo que utilizamos para la traer los datos en formato json desde el servidor.
+// private void downloadJSON(final String urlWebService, final Intent intent) {
 //
-//    public void onClickContinuar(View view) {
-//        Intent intent = new Intent(this, ActivityPerfilComerciante.class);
-//        usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-//        psw = (EditText) findViewById(R.id.campoPsw);// OJO
-//        String emailEmpresa = usu.getText().toString();
-//        downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa,%20nombreEmpresa%20FROM%20Empresas%20where%20emailEmpresa=%27" + emailEmpresa + "%27", intent);
+//        class DownloadJSON extends AsyncTask<Void, Void, String> {
+//
+//            @Override
+//            protected void onPreExecute() {
+//                super.onPreExecute();
+//            }
+//
+//            //Una vez realizada la consulta y obtenidos los datos
+//            //comprobamos password y email. Si correcto vamos al area de
+//            //empresa si no enviamos un mensaje.
+//            @Override
+//            protected void onPostExecute(String s) {
+//                JSONArray jsonArray = null;
+//                String sha1;
+//                super.onPostExecute(s);
+//                try {
+//                    jsonArray = new JSONArray(s);
+//                    JSONObject obj = jsonArray.getJSONObject(0);
+//                    valor = obj.getString("pswrd");
+//                    idEmpresa = obj.getInt("idEmpresa");
+//                } catch (JSONException e) {
+//                }
+//
+//               //Realizamos una comprobacion contra el hash guardado en BBDD
+//                MessageDigest digest = null;
+//                try {
+//                    digest = MessageDigest.getInstance("SHA-1");
+//                } catch (NoSuchAlgorithmException e) {
+//                    e.printStackTrace();
+//                }
+//                digest.reset();
+//                try {
+//                    digest.update(psw.getText().toString().getBytes("utf8"));
+//                } catch (UnsupportedEncodingException e) {
+//                    e.printStackTrace();
+//                }
+//                sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
+//
+//                if (sha1.equals(valor)) {
+//                    intent.putExtra("idEmpresa", idEmpresa);
+//                    intent.putExtra("nombreEmpresa", usu.getText().toString());
+//                    startActivity(intent);
+//                } else {
+//                    Toast toast1 =
+//                            Toast.makeText(getApplicationContext(),
+//                                    "Los datos no son correctos", Toast.LENGTH_SHORT);
+//
+//                    toast1.show();
+//                }
+//            }
+//             //Realizamos la conexion y obtenemos un json
+//            @Override
+//            protected String doInBackground(Void... voids) {
+//                try {
+//                    URL url = new URL(urlWebService);
+//                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+//                    StringBuilder sb = new StringBuilder();
+//                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
+//                    String obtenido = null;
+//                    String json = " ";
+//                    while ((json = bufferedReader.readLine()) != null) {
+//                        sb.append(json + "\n");
+//                    }
+//                    //Controlamos los valores nulos
+//                    if ((json == null) && sb.toString().equals("[]\n")) {
+//                        obtenido = "[{\"pswrd\":\"11111\"}]";
+//
+//                    } else {
+//                        obtenido = sb.toString().trim();
+//                    }
+//                    ;
+//                    return obtenido;
+//                } catch (Exception e) {
+//                    return null;
+//                }
+//            }
+//        }
+//        DownloadJSON getJSON = new DownloadJSON();
+//        getJSON.execute();
 //    }
-//
-    private void downloadJSON(final String urlWebService, final Intent intent) {
-
-        class DownloadJSON extends AsyncTask<Void, Void, String> {
-
-            @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
-
-
-            @Override
-            protected void onPostExecute(String s) {
-                JSONArray jsonArray = null;
-                String sha1;
-                super.onPostExecute(s);
-                try {
-                    jsonArray = new JSONArray(s);
-                    JSONObject obj = jsonArray.getJSONObject(0);
-                    valor = obj.getString("pswrd");
-                    idEmpresa = obj.getInt("idEmpresa");
-                } catch (JSONException e) {
-                }
-
-
-                MessageDigest digest = null;
-                try {
-                    digest = MessageDigest.getInstance("SHA-1");
-                } catch (NoSuchAlgorithmException e) {
-                    e.printStackTrace();
-                }
-                digest.reset();
-                try {
-                    digest.update(psw.getText().toString().getBytes("utf8"));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-                sha1 = String.format("%040x", new BigInteger(1, digest.digest()));
-
-                if (sha1.equals(valor)) {
-                    intent.putExtra("idEmpresa", idEmpresa);
-                    intent.putExtra("nombreEmpresa", usu.getText().toString());
-                    startActivity(intent);
-                } else {
-                    Toast toast1 =
-                            Toast.makeText(getApplicationContext(),
-                                    "Los datos no son correctos", Toast.LENGTH_SHORT);
-
-                    toast1.show();
-                }
-            }
-
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String obtenido = null;
-                    String json = " ";
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    if ((json == null) && sb.toString().equals("[]\n")) {
-                        obtenido = "[{\"pswrd\":\"11111\"}]";
-
-                    } else {
-                        obtenido = sb.toString().trim();
-                    }
-                    ;
-                    return obtenido;
-                } catch (Exception e) {
-                    return null;
-                }
-            }
-        }
-        DownloadJSON getJSON = new DownloadJSON();
-        getJSON.execute();
-    }
 
 }

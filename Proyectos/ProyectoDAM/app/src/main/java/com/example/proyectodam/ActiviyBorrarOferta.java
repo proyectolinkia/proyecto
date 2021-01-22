@@ -33,9 +33,12 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
         idEmpresa=parametros.getInt("id");
         puntoVenta=parametros.getString("NombrePV");
         puntoVenta=puntoVenta.replace(" ","%20");
+
+        //Rellenamos el spinner con los datos obtenidos en consulta a bbdd
         downloadJSON_sp("http://35.205.20.239/sql.php?sentenciasql=Select%20idProducto,nombreProducto,precioProducto%20FROM%20Productos%20where%20idPuntoVentafk%20in%20(Select%20idPuntoVenta%20From%20PuntoVenta%20where%20nombrePuntoVenta=%27"+puntoVenta+"%27)");
     }
 
+    //Borramos la oferta seleccionada
     public void borrarOfertaF(View view) {
         Spinner sPuntosVentaSel = (Spinner) findViewById(R.id.spinnerBo);
         String tosplit=sPuntosVentaSel.getSelectedItem().toString();
@@ -43,6 +46,7 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
         String tosplit2=arrSplit[0];
         String[] arrSplit2 = tosplit2.split("=");
         String nombre=arrSplit2[1];
+        //Ejecutamos la consulta en BBDD
         downloadJSON_Bo("http://35.205.20.239/sqli_5.php?idProducto="+nombre+"");
     }
 
@@ -87,11 +91,9 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
         DownloadJSON_sp getJSON = new DownloadJSON_sp();
         getJSON.execute();
     }
-
+//Cargamos las ofertas del punto de venta en un spinner
     private void loadIntoSp(String json) throws JSONException {
-        //  RecyclerView recyclerView;
-        //   RecyclerView.Adapter mAdapter;
-        //   RecyclerView.LayoutManager layoutManager;
+
         JSONArray jsonArray = new JSONArray(json);
         String[] ofertas = new String[jsonArray.length()];
         Spinner sOfertas = (Spinner) findViewById(R.id.spinnerBo);
@@ -99,23 +101,13 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
             JSONObject obj = jsonArray.getJSONObject(i);
             ofertas[i] ="idProducto="+ obj.getString("idProducto") +"; nombreProducto="+ obj.getString("nombreProducto") ;
         }
-        // recyclerView = (RecyclerView) findViewById(R.id.rvOfertas);
 
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        //   recyclerView.setHasFixedSize(true);
-
-        // use a linear layout manager
-        // layoutManager = new LinearLayoutManager(this);
-        //   recyclerView.setLayoutManager(layoutManager);
-
-        // specify an adapter (see also next example)
-        //   mAdapter = new MyAdapter(puntoVenta);
-        //  recyclerView.setAdapter(mAdapter);
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, ofertas);
         sOfertas.setAdapter(arrayAdapter);
     }
     /*******************************************************/
+
+    //Se ejecuta el borrado
     private void  downloadJSON_Bo(final String urlWebService) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -125,7 +117,7 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+           //El resultado se recibe como un json
             @Override
             protected void onPostExecute(String s) {
 
@@ -154,14 +146,14 @@ public class ActiviyBorrarOferta extends AppCompatActivity {
                         toast1.show();
 
                     }
-                    // String  idEmpresa = obj.getString("idEmpresa");
+
                 } catch (JSONException e) {
-                    // e.printStackTrace();
+
                 }
 
 
             }
-
+            //Ejecutamos la consulta  y recibimos el resultado
             @Override
             protected String doInBackground(Void... voids) {
                 try {

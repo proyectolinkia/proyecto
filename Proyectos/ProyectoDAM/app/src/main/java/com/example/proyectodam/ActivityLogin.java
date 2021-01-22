@@ -38,19 +38,21 @@ public class ActivityLogin extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
     }
+    //Si se trata de un nuevo registro derivamos a la activity correspondiente
         public void clickRegistro(View view) {
         Intent intent = new Intent(this, ActivityRegistroEmpresa.class);
         startActivity(intent);
     }
-
+   //Al pulsar comprobamos los datos introducidos por el usuario
     public void onClickContinuar(View view) {
         Intent intent = new Intent(this, ActivityPerfilComerciante.class);
-        usu = (EditText) findViewById(R.id.campoUsuario); //ojo
-        psw = (EditText) findViewById(R.id.campoPsw);// OJO
+        usu = (EditText) findViewById(R.id.campoUsuario);
+        psw = (EditText) findViewById(R.id.campoPsw);
         String emailEmpresa = usu.getText().toString();
+        //obtenemos los datos de la bbdd con una consulta mediante php
         downloadJSON("http://35.205.20.239/sql.php?sentenciasql=Select%20pswrd,%20idEmpresa,%20nombreEmpresa%20FROM%20Empresas%20where%20emailEmpresa=%27" + emailEmpresa + "%27", intent);
     }
-
+     //Ejecucion de la consulta
     private void downloadJSON(final String urlWebService, final Intent intent) {
 
         class DownloadJSON extends AsyncTask<Void, Void, String> {
@@ -60,7 +62,9 @@ public class ActivityLogin extends AppCompatActivity {
                 super.onPreExecute();
             }
 
-
+           // Una vez realizada la consulta y obtenidos los datos
+            //comprobamos password y email. Si correcto vamos al area de
+            //empresa si no enviamos un mensaje.
             @Override
             protected void onPostExecute(String s) {
                 JSONArray jsonArray = null;
@@ -75,7 +79,7 @@ public class ActivityLogin extends AppCompatActivity {
                 } catch (JSONException e) {
                 }
 
-
+                //Realizamos una comprobacion contra el hash guardado en BBDD
                 MessageDigest digest = null;
                 try {
                     digest = MessageDigest.getInstance("SHA-1");
@@ -102,7 +106,7 @@ public class ActivityLogin extends AppCompatActivity {
                     toast1.show();
                 }
             }
-
+            //Realizamos la conexion y obtenemos un json
             @Override
             protected String doInBackground(Void... voids) {
                 try {
@@ -115,6 +119,7 @@ public class ActivityLogin extends AppCompatActivity {
                     while ((json = bufferedReader.readLine()) != null) {
                         sb.append(json + "\n");
                     }
+                    //Controlamos los valores nulos
                     if ((json == null) && sb.toString().equals("[]\n")) {
                         obtenido = "[{\"pswrd\":\"11111\"}]";
 
