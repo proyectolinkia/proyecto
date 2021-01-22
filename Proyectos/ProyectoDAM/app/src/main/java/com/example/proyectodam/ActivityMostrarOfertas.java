@@ -81,7 +81,7 @@ public class ActivityMostrarOfertas extends AppCompatActivity {
         listview = (ListView) findViewById(R.id.rvOfertas);
         for (int i = 0; i < jsonArray.length(); i++) {
             JSONObject obj = jsonArray.getJSONObject(i);
-            puntoVenta[i] =" "+ obj.getString("idProducto")+" "+obj.getString("nombreProducto")+" "+obj.getString("precioProducto")+"€";
+            puntoVenta[i] =" Ref: "+ obj.getString("idProducto")+". Nombre:"+obj.getString("nombreProducto")+". Precio: "+obj.getString("precioProducto")+"€";
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,  puntoVenta);

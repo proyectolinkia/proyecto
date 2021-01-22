@@ -86,7 +86,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:digits="1234567890"
-                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -116,7 +116,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:digits="1234567890"
-                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -146,7 +146,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:digits="1234567890+"
-                        android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
+                        android:inputType="number" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout

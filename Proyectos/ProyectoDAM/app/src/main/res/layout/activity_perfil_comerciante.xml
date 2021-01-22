@@ -98,17 +98,7 @@
                 android:onClick="borrarPuntoVenta"
                 android:text="Borrar Punto Venta" />
 
-            <TextView
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:paddingTop="10dp"
-                android:paddingBottom="5dp"
-                android:text="Ofertas"
-                android:textColor="#000000"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:typeface="sans" />
+
 
             <ListView
                 android:layout_width="match_parent"
