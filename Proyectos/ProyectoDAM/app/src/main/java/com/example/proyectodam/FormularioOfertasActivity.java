@@ -115,6 +115,9 @@ public class FormularioOfertasActivity extends AppCompatActivity {
         String categoriaP= sCategorias.getSelectedItem().toString();
 
         nombrePV=nombrePV.replace(" ","%20");
+        referenciaP=referenciaP.replace(" ","%20");
+        nombreP= nombreP.replace(" ","%20");
+        descripcionP=descripcionP.replace(" ","%20");
         //Ejecutamos la consulta en bbdd
         downloadJSONGO("http://35.205.20.239/sqli_4.php?referencia=%27"+referenciaP+"%27&nombre=%27"+nombreP+"%27&descripcion=%27"+descripcionP+"%27&precio="+precioP+"&nombreCategoria=%27"+categoriaP+"%27&" +
                 "&nombrePuntoVenta=%27"+nombrePV+"%27&idEmpresa="+idEmpresa+"");

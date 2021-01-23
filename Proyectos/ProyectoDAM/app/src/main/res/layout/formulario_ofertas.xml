@@ -44,7 +44,7 @@
                     android:id="@+id/campoReferencia"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz1234567890_-@. "
                     android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -59,7 +59,7 @@
                     android:id="@+id/campoDenominacionProd"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz1234567890_-@. "
                     android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,7 +74,7 @@
                     android:id="@+id/campoDescripcionProd"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_-@. "
+                    android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyz1234567890_-@. "
                     android:inputType="textFilter|textVisiblePassword|textNoSuggestions" />
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -59,10 +59,22 @@ public class ActivityFormularioRegistro extends AppCompatActivity {
         String stelEm=telEmpresa.getText().toString();
         String semailEm=emailEmpresa.getText().toString();
 
-       //Ejecutamos el guardado en la BBDD utilizando un php específico
-        downloadJSON("http://35.205.20.239/sqli_2.php?nombre=%27"+snombreEm+"%27&calle=%27"+scalleEm+"%27&numero="+snumeroEm+"&ciudad=%27"+sciudadEm+"%27&provincia=%27"+sprovinciaEm+"%27&cp="+scpEm+"&telefono="+stelEm+"" +
-                "&email=%27"+semailEm+"%27&idEmpresa="+idEmpresa+"");
+        snombreEm=snombreEm.replace(" ","%20");
+        scalleEm=scalleEm.replace(" ","%20");
+        sciudadEm=sciudadEm.replace(" ","%20");
+        sprovinciaEm=sprovinciaEm.replace(" ","%20");
+        if(snombreEm.equals("")|scalleEm.equals("") |snumeroEm.equals("") |sciudadEm.equals("") |scpEm.equals("")| sprovinciaEm.equals("") |stelEm.equals("") |semailEm.equals(""))
+        {
+            Toast toast1 =
+                    Toast.makeText(getApplicationContext(),
+                            "Todos los datos son necesarios.Complete el formulario", Toast.LENGTH_SHORT);
 
+            toast1.show();
+        }else {
+            //Ejecutamos el guardado en la BBDD utilizando un php específico
+            downloadJSON("http://35.205.20.239/sqli_2.php?nombre=%27" + snombreEm + "%27&calle=%27" + scalleEm + "%27&numero=" + snumeroEm + "&ciudad=%27" + sciudadEm + "%27&provincia=%27" + sprovinciaEm + "%27&cp=" + scpEm + "&telefono=" + stelEm + "" +
+                    "&email=%27" + semailEm + "%27&idEmpresa=" + idEmpresa + "");
+        }
     }
 
 
